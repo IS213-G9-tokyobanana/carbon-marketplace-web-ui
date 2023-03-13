@@ -7,8 +7,8 @@ const headline = {
     incididunt ut labore et
   `,
   button: {
-    left: "Do something",
-    right: "Do something"
+    left: "Get started",
+    right: "Explore"
   }
 }
 
@@ -49,7 +49,6 @@ const exploreProjects = {
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
     labore et 
   `,
-  tco2e: "tCO2e",
   button: {
     showMore: "Show more",
     purchase: "Purchase"
@@ -68,7 +67,7 @@ const socialProof = [
   },
   {
     number: "25",
-    sub: "tCO2e",
+    tco2e: true,
     description: "Carbon offset"
   }
 ]

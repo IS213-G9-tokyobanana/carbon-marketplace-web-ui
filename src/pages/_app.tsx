@@ -9,6 +9,8 @@ import Header from '../components/Header';
 
 
 const App = styled.main`
+  --header-height: 70px;
+
   * {
     font-family: ${fonts.dmSans.style.fontFamily};
   }

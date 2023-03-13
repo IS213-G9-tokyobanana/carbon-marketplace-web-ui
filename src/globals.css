@@ -1,5 +1,6 @@
 :root {
   --page-padding-h: 96px;
+  --page-max-width: 1400px;
 }
 
 html, body {

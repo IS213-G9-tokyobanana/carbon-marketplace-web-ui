@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
 import locale from 'locale';
@@ -36,20 +37,31 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `;
 
-export default () => (
-  <Wrapper>
-    <TextContainer>
-      <h1 className="title-large">
-        {locale.landing.callToAction.pitch}
-      </h1>
+export default () => {
+  const router = useRouter();
 
-      <Button classic>
-        {locale.landing.callToAction.button}
-      </Button>
-    </TextContainer>
+  const handleButtonClick = () => {
+    router.push("/onboard");
+  }
 
-    <ImageContainer>
-      <Image />
-    </ImageContainer>
-  </Wrapper>
-);
+  return (
+    <Wrapper>
+      <TextContainer>
+        <h1 className="title-large">
+          {locale.landing.callToAction.pitch}
+        </h1>
+
+        <Button
+          classic
+          onClick={handleButtonClick}
+        >
+          {locale.landing.callToAction.button}
+        </Button>
+      </TextContainer>
+
+      <ImageContainer>
+        <Image />
+      </ImageContainer>
+    </Wrapper>
+  );
+}

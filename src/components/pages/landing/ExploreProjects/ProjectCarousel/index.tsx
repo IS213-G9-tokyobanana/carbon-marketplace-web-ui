@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { Project } from 'types';
+import { API } from 'types';
 
 import CategoryTab from './CategoryTab';
 import Card from './Card';
@@ -21,7 +21,7 @@ const CardGroup = styled.div`
 `;
 
 export default ({ data }: {
-  data: Project[]
+  data: API.Project[]
 }) => {
   const [category, setCategory] = useState<string>();
   const [categories, setCategories] = useState<string[]>([]);

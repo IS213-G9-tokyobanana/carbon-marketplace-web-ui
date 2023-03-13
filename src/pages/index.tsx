@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import api from 'api';
-import { Project } from 'types';
+import { API } from 'types';
 
 import MainHeadline from 'components/pages/landing/MainHeadline';
 import CleanerTomorrow from 'components/pages/landing/CleanerTomorrow';
@@ -11,15 +10,13 @@ import ExploreProjects from 'components/pages/landing/ExploreProjects';
 import SocialProof from 'components/pages/landing/SocialProof';
 
 const Wrapper = styled.div`
+  max-width: var(--page-max-width);
+  margin: 0 auto;
 `;
 
-export default () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    setProjects(api.getProjects());
-  }, []);
-
+export default ({ projects }: {
+  projects: API.Project[]
+}) => {
   return (
     <Wrapper>
       <MainHeadline />
@@ -32,5 +29,15 @@ export default () => {
 
       <CallToAction />
     </Wrapper>
-  )
+  );
+}
+
+export async function getServerSideProps() {
+  const projects = api.getProjects();
+
+  return {
+    props: {
+      projects
+    }
+  }
 }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import config, { color } from 'config';
 import locale from 'locale';
-import { Project } from 'types';
+import { API } from 'types';
 
 import Heart from 'components/common/svg/Heart';
 import Button from 'components/common/Button';
@@ -45,7 +45,7 @@ const ImageContainer = styled.div`
   ${$ImageMask} { background: ${color.neutral0} }
 `;
 
-export default (props: Project) => {
+export default (props: API.Project) => {
 
   const title = props.title.length > config.landing.exploreProjects.maxTitleLength ?
     `${props.title.substring(0, config.landing.exploreProjects.maxTitleLength - 3)}...` :
@@ -67,7 +67,9 @@ export default (props: Project) => {
 
       <FlexRow>
         <p className="body-small">
-          {props.tco2e} {locale.landing.exploreProjects.tco2e}
+          {props.tco2e}
+          {' '}
+          <span dangerouslySetInnerHTML={{ __html: locale.tco2e }} />
         </p>
 
         <Button inverted>

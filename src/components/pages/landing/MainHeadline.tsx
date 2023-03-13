@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
 import locale from 'locale';
@@ -12,6 +13,7 @@ const Wrapper = styled.section`
 
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 40px;
 `;
 
@@ -47,7 +49,16 @@ const ButtonGroup = styled.div`
 `;
 
 export default () => {
+  const router = useRouter();
 
+  const goToOnboard = () => {
+    router.push("/onboard");
+  }
+
+  const scrollToExplore = () => {
+    const element = document.getElementById("explore-project");
+    element?.scrollIntoView({ behavior: "smooth" });
+  }
 
   return (
     <Wrapper>
@@ -70,11 +81,11 @@ export default () => {
         </p>
 
         <ButtonGroup>
-          <Button classic>
+          <Button classic onClick={goToOnboard}>
             {locale.landing.headline.button.left}
           </Button>
 
-          <Button inverted>
+          <Button inverted onClick={scrollToExplore}>
             {locale.landing.headline.button.right}
           </Button>
         </ButtonGroup>
