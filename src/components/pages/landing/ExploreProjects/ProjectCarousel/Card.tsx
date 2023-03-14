@@ -45,6 +45,11 @@ const ImageContainer = styled.div`
   ${$ImageMask} { background: ${color.neutral0} }
 `;
 
+const ProjectOffsetContainer = styled.p`
+  display: flex;
+  gap: 8px;
+`;
+
 export default (props: API.Project) => {
 
   const title = props.title.length > config.landing.exploreProjects.maxTitleLength ?
@@ -64,10 +69,10 @@ export default (props: API.Project) => {
       </ImageContainer>
 
       <FlexRow>
-        <p className="body-small" style={{ display: "flex" }}>
-          <span style={{ marginRight: "5px" }}>{props.tco2e}</span>
+        <ProjectOffsetContainer className="body-small">
+          <span>{props.tco2e}</span>
           <span dangerouslySetInnerHTML={{ __html: locale.tco2e }} />
-        </p>
+        </ProjectOffsetContainer>
 
         <Button inverted>
           {locale.landing.exploreProjects.button.purchase}
