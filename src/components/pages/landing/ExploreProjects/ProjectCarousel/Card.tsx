@@ -54,9 +54,7 @@ export default (props: API.Project) => {
   return (
     <Wrapper>
       <FlexRow>
-        <h4 className="body-large">
-          {title}
-        </h4>
+        <h4 className="body-large">{title}</h4>
 
         <Heart />
       </FlexRow>
@@ -66,9 +64,8 @@ export default (props: API.Project) => {
       </ImageContainer>
 
       <FlexRow>
-        <p className="body-small">
-          {props.tco2e}
-          {' '}
+        <p className="body-small" style={{ display: "flex" }}>
+          <span style={{ marginRight: "5px" }}>{props.tco2e}</span>
           <span dangerouslySetInnerHTML={{ __html: locale.tco2e }} />
         </p>
 
