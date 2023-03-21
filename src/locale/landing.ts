@@ -8,8 +8,8 @@ const headline = {
   `,
   button: {
     left: 'Get started',
-    right: 'Explore'
-  }
+    right: 'Explore',
+  },
 };
 
 const cleanerTomorrow = {
@@ -22,7 +22,7 @@ const cleanerTomorrow = {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
         labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
         incididunt ut labore et 
-      `
+      `,
     },
     {
       title: 'Browse & fund your favorite projects',
@@ -30,7 +30,7 @@ const cleanerTomorrow = {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
         labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
         incididunt ut labore et 
-      `
+      `,
     },
     {
       title: 'Watch your impact grow every month',
@@ -38,9 +38,9 @@ const cleanerTomorrow = {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
         labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
         incididunt ut labore et 
-      `
-    }
-  ]
+      `,
+    },
+  ],
 };
 
 const exploreProjects = {
@@ -51,30 +51,30 @@ const exploreProjects = {
   `,
   button: {
     showMore: 'Show more',
-    purchase: 'Purchase'
+    purchase: 'Purchase',
   },
-  projectAmtSuffix: 'Projects'
+  projectAmtSuffix: 'Projects',
 };
 
 const socialProof = [
   {
     number: '24+',
-    description: 'Projects across ASEAN'
+    description: 'Projects across ASEAN',
   },
   {
     number: '17k',
-    description: 'Go greeners and counting'
+    description: 'Go greeners and counting',
   },
   {
     number: '25',
     tco2e: true,
-    description: 'Carbon offset'
-  }
+    description: 'Carbon offset',
+  },
 ];
 
 const callToAction = {
   pitch: 'Adventures start with a step forward. Make it your own.',
-  button: 'Get started'
+  button: 'Get started',
 };
 
 export default {
@@ -82,5 +82,5 @@ export default {
   cleanerTomorrow,
   exploreProjects,
   socialProof,
-  callToAction
+  callToAction,
 };

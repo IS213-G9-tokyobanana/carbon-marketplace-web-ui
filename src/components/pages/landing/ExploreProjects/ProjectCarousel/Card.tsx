@@ -24,13 +24,15 @@ const FlexRow = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  h4 { 
+  h4 {
     color: ${color.neutral10};
     font-weight: 700;
     letter-spacing: -3%;
   }
 
-  p { color: ${color.neutral10} };
+  p {
+    color: ${color.neutral10};
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -42,7 +44,9 @@ const ImageContainer = styled.div`
   border-radius: 24px;
   overflow: hidden;
 
-  ${$ImageMask} { background: ${color.neutral0} }
+  ${$ImageMask} {
+    background: ${color.neutral0};
+  }
 `;
 
 const ProjectOffsetContainer = styled.p`
@@ -51,10 +55,13 @@ const ProjectOffsetContainer = styled.p`
 `;
 
 export default (props: API.Project) => {
-
-  const title = props.title.length > config.landing.exploreProjects.maxTitleLength ?
-    `${props.title.substring(0, config.landing.exploreProjects.maxTitleLength - 3)}...` :
-    props.title;
+  const title =
+    props.title.length > config.landing.exploreProjects.maxTitleLength
+      ? `${props.title.substring(
+          0,
+          config.landing.exploreProjects.maxTitleLength - 3,
+        )}...`
+      : props.title;
 
   return (
     <Wrapper>
@@ -74,10 +81,8 @@ export default (props: API.Project) => {
           <span dangerouslySetInnerHTML={{ __html: locale.tco2e }} />
         </ProjectOffsetContainer>
 
-        <Button inverted>
-          {locale.landing.exploreProjects.button.purchase}
-        </Button>
+        <Button inverted>{locale.landing.exploreProjects.button.purchase}</Button>
       </FlexRow>
     </Wrapper>
   );
-}
+};

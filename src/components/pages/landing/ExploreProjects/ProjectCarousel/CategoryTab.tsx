@@ -45,15 +45,15 @@ const Option = styled.div(
       background: ${color.neutral10};
       height: 4px;
     }
-  `
+  `,
   )}
-`
+`,
 );
 
 export default ({
   options,
   selected,
-  onOptionChange
+  onOptionChange,
 }: {
   options: string[];
   selected?: string;

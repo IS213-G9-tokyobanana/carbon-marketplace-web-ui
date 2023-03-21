@@ -7,71 +7,71 @@ function getProjects(): API.Project[] {
       category: 'Popular',
       title: 'test loong title',
       liked: false,
-      tco2e: '8 / 10'
+      tco2e: '8 / 10',
     },
     {
       id: 2,
       category: 'Popular',
       title: 'test loong title loong tittle',
       liked: false,
-      tco2e: '8 / 10'
+      tco2e: '8 / 10',
     },
     {
       id: 3,
       category: 'Popular',
       title: 'test loong title',
       liked: false,
-      tco2e: '8 / 10'
+      tco2e: '8 / 10',
     },
     {
       id: 4,
       category: 'Popular',
       title: 'test loong title',
       liked: false,
-      tco2e: '8 / 10'
+      tco2e: '8 / 10',
     },
     {
       id: 5,
       category: 'Popular',
       title: 'test loong title',
       liked: false,
-      tco2e: '8 / 10'
+      tco2e: '8 / 10',
     },
     {
       id: 6,
       category: 'Popular',
       title: 'test loong title',
       liked: false,
-      tco2e: '8 / 10'
+      tco2e: '8 / 10',
     },
     {
       id: 7,
       category: 'Community Projects',
       title: 'test loong title',
       liked: false,
-      tco2e: '8 / 10'
+      tco2e: '8 / 10',
     },
     {
       id: 8,
       category: 'Community Projects',
       title: 'test loong title',
       liked: false,
-      tco2e: '8 / 10'
+      tco2e: '8 / 10',
     },
     {
       id: 9,
       category: 'Regional Projects',
       title: 'test loong title',
       liked: false,
-      tco2e: '8 / 10'
+      tco2e: '8 / 10',
     },
     {
       id: 10,
       category: 'Enterprise',
       title: 'test loong title',
       liked: false,
-      tco2e: '8 / 10'
-    }
+      tco2e: '8 / 10',
+    },
   ];
 }
 
@@ -89,7 +89,7 @@ function getQuestions(): API.Question[] {
         Entering your country helps us begin the calculation with a 
         baseline for every category
       `,
-      answers: ['Singapore', 'Malaysia', 'Japan', 'Custom']
+      answers: ['Singapore', 'Malaysia', 'Japan', 'Custom'],
     },
     {
       id: 2,
@@ -101,7 +101,7 @@ function getQuestions(): API.Question[] {
         that month. You can divide the total by the number of people
         who share that bill.
       `,
-      answers: ['Little to None', 'Average', 'A Lot', 'Custom']
+      answers: ['Little to None', 'Average', 'A Lot', 'Custom'],
     },
     {
       id: 3,
@@ -113,7 +113,7 @@ function getQuestions(): API.Question[] {
         soluta sunt ipsa recusandae porro fugit quae obcaecati? Pariatur, 
         nobis vitae.
       `,
-      answers: ['Little to None', 'Average', 'Apple', 'Custom']
+      answers: ['Little to None', 'Average', 'Apple', 'Custom'],
     },
     {
       id: 4,
@@ -125,7 +125,7 @@ function getQuestions(): API.Question[] {
         soluta sunt ipsa recusandae porro fugit quae obcaecati? Pariatur, 
         nobis vitae.
       `,
-      answers: ['Little to None', 'Average', 'Orange', 'Custom']
+      answers: ['Little to None', 'Average', 'Orange', 'Custom'],
     },
     {
       id: 5,
@@ -137,7 +137,7 @@ function getQuestions(): API.Question[] {
         soluta sunt ipsa recusandae porro fugit quae obcaecati? Pariatur, 
         nobis vitae.
       `,
-      answers: ['Little to None', 'Average', 'Sausage', 'Custom']
+      answers: ['Little to None', 'Average', 'Sausage', 'Custom'],
     },
     {
       id: 6,
@@ -149,12 +149,12 @@ function getQuestions(): API.Question[] {
         soluta sunt ipsa recusandae porro fugit quae obcaecati? Pariatur, 
         nobis vitae.
       `,
-      answers: ['Little to None', 'Average', 'Sausage', 'Yellow']
-    }
+      answers: ['Little to None', 'Average', 'Sausage', 'Yellow'],
+    },
   ];
 }
 
 export default {
   getProjects,
-  getQuestions
+  getQuestions,
 };

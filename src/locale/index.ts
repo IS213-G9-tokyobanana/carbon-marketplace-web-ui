@@ -9,15 +9,15 @@ export default {
     button: {
       cta: 'Get started',
       login: 'Login',
-      dashboard: 'Dashboard'
-    }
+      dashboard: 'Dashboard',
+    },
   },
   carbonFootprint: {
     carbonIndex: `Your carbon footprint {{ 1 }} tons of CO<sub>2</sub> per year`,
     comparison: `That's {{ 1 }} less than the Singapore average.`,
-    source: 'source'
+    source: 'source',
   },
 
   landing,
-  buyer
+  buyer,
 };

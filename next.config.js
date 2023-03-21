@@ -4,18 +4,18 @@ const nextConfig = {
   swcMinify: true,
   compiler: {
     styledComponents: {
-      displayName: true
-    }
+      displayName: true,
+    },
   },
   async redirects() {
     return [
       {
         source: '/buyer',
         destination: '/buyer/my-stats',
-        permanent: true
-      }
+        permanent: true,
+      },
     ];
-  }
+  },
 };
 
 module.exports = nextConfig;

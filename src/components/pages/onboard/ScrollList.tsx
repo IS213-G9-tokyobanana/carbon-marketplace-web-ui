@@ -75,14 +75,14 @@ const Mask = styled.div(
     top: unset;
 
     background: linear-gradient(0deg, #FFFFFF 50%, rgba(217, 217, 217, 0) 100%);
-  `
+  `,
   )}
-`
+`,
 );
 
 export default ({
   data,
-  onQuestionClick
+  onQuestionClick,
 }: {
   data: API.Question[];
   onQuestionClick: (q: API.Question) => void;

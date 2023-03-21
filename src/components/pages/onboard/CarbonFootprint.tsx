@@ -20,12 +20,16 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 10px;
 
-  p.subtitle-small, p.title-large, p#comparison { 
+  p.subtitle-small,
+  p.title-large,
+  p#comparison {
     color: ${color.neutral10};
     text-align: center;
   }
-  
-  p.body-small { color: ${color.neutral8} }
+
+  p.body-small {
+    color: ${color.neutral8};
+  }
 
   p#comparison {
     font-style: italic;
@@ -40,33 +44,23 @@ const Wrapper = styled.div`
   }
 `;
 
-export default ({ carbonIndex }: {
-  carbonIndex: number
-}) => {
-  const carbonIndexSubstr = locale.onboard.carbonFootprint.carbonIndex.split("{{ 1 }}");
-  const comparison = locale.onboard.carbonFootprint.comparison.replace("{{ 1 }}", "8%");
+export default ({ carbonIndex }: { carbonIndex: number }) => {
+  const carbonIndexSubstr = locale.onboard.carbonFootprint.carbonIndex.split('{{ 1 }}');
+  const comparison = locale.onboard.carbonFootprint.comparison.replace('{{ 1 }}', '8%');
 
   return (
     <Wrapper>
-      <p className="subtitle-small">
-        {carbonIndexSubstr[0]}
-      </p>
+      <p className="subtitle-small">{carbonIndexSubstr[0]}</p>
 
-      <p className="title-large">
-        {carbonIndex}
-      </p>
+      <p className="title-large">{carbonIndex}</p>
 
-      <p className="body-small">
-        {carbonIndexSubstr[1]}
-      </p>
+      <p className="body-small">{carbonIndexSubstr[1]}</p>
 
       <p id="comparison">
         {comparison}
 
-        <Link href="">
-          {locale.onboard.carbonFootprint.source}
-        </Link>
+        <Link href="">{locale.onboard.carbonFootprint.source}</Link>
       </p>
     </Wrapper>
-  )
-}
+  );
+};

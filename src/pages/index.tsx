@@ -35,7 +35,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      projects
-    }
+      projects,
+    },
   };
 }
