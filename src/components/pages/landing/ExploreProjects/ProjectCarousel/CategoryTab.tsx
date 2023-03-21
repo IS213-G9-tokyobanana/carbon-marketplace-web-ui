@@ -8,12 +8,13 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
 
-  & > * { width: 100% }
+  & > * {
+    width: 100%;
+  }
 `;
 
-const Option = styled.div(({ $active }: {
-  $active: boolean
-}) => `
+const Option = styled.div(
+  ({ $active }: { $active: boolean }) => `
   --duration: 0.25s;
 
   position: relative;
@@ -35,24 +36,32 @@ const Option = styled.div(({ $active }: {
     transition: background var(--duration), height var(--duration);
   }
 
-  ${applyStyleIf($active, `
+  ${applyStyleIf(
+    $active,
+    `
     color: ${color.neutral10};
 
     &:before {
       background: ${color.neutral10};
       height: 4px;
     }
-  `)}
-`);
+  `
+  )}
+`
+);
 
-export default ({ options, selected, onOptionChange }: {
-  options: string[],
-  selected?: string,
-  onOptionChange: (o: string) => void
+export default ({
+  options,
+  selected,
+  onOptionChange
+}: {
+  options: string[];
+  selected?: string;
+  onOptionChange: (o: string) => void;
 }) => {
   return (
     <Wrapper>
-      {options.map(v =>
+      {options.map((v) => (
         <Option
           key={v}
           className="body-large"
@@ -61,7 +70,7 @@ export default ({ options, selected, onOptionChange }: {
         >
           {v}
         </Option>
-      )}
+      ))}
     </Wrapper>
   );
-}
+};

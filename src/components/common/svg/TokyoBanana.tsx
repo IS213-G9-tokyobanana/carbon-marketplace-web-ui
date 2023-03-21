@@ -10,7 +10,7 @@ export const Wrapper = styled.svg`
   display: block;
 `;
 
-export default (props: Omit<JSX.IntrinsicElements["svg"], "ref">) => (
+export default (props: Omit<JSX.IntrinsicElements['svg'], 'ref'>) => (
   <Wrapper
     {...props}
     width={40}

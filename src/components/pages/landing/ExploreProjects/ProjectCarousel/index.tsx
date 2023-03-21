@@ -20,9 +20,7 @@ const CardGroup = styled.div`
   row-gap: 30px;
 `;
 
-export default ({ data }: {
-  data: API.Project[]
-}) => {
+export default ({ data }: { data: API.Project[] }) => {
   const [category, setCategory] = useState<string>();
   const [categories, setCategories] = useState<string[]>([]);
 
@@ -46,13 +44,12 @@ export default ({ data }: {
       />
 
       <CardGroup>
-        {data.filter(v => v.category === category).map(v =>
-          <Card
-            key={v.id}
-            {...v}
-          />
-        )}
+        {data
+          .filter((v) => v.category === category)
+          .map((v) => (
+            <Card key={v.id} {...v} />
+          ))}
       </CardGroup>
     </Wrapper>
   );
-}
+};

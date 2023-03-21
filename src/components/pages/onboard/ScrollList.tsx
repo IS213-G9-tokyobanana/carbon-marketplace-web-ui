@@ -58,9 +58,8 @@ const ImageContainer = styled.div`
   box-shadow: 0 4px 4px 0 #00000040;
 `;
 
-const Mask = styled.div(({ $bottom }: {
-  $bottom?: boolean
-}) => `
+const Mask = styled.div(
+  ({ $bottom }: { $bottom?: boolean }) => `
   position: absolute;
   z-index: 3;
   top: 0;
@@ -69,34 +68,38 @@ const Mask = styled.div(({ $bottom }: {
 
   background: linear-gradient(180deg, #FFFFFF 50%, rgba(217, 217, 217, 0) 100%);
 
-  ${applyStyleIf(!!$bottom, `
+  ${applyStyleIf(
+    !!$bottom,
+    `
     bottom: 0;
     top: unset;
 
     background: linear-gradient(0deg, #FFFFFF 50%, rgba(217, 217, 217, 0) 100%);
-  `)}
-`);
+  `
+  )}
+`
+);
 
-export default ({ data, onQuestionClick }: {
-  data: API.Question[],
-  onQuestionClick: (q: API.Question) => void
+export default ({
+  data,
+  onQuestionClick
+}: {
+  data: API.Question[];
+  onQuestionClick: (q: API.Question) => void;
 }) => (
   <Wrapper>
     <Mask />
 
     <ItemGroup>
-      {data.map(v =>
-        <Item
-          key={v.id}
-          onClick={() => onQuestionClick(v)}
-        >
+      {data.map((v) => (
+        <Item key={v.id} onClick={() => onQuestionClick(v)}>
           <ImageContainer>
             <Image />
           </ImageContainer>
 
           <p>{v.imgAlt}</p>
         </Item>
-      )}
+      ))}
     </ItemGroup>
 
     <Mask $bottom />

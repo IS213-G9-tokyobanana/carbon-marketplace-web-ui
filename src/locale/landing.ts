@@ -1,23 +1,23 @@
 const headline = {
-  title: "Offsetting Carbon Emissions for a Greener Planet",
-  subtitle: "Invest in cleaner future",
+  title: 'Offsetting Carbon Emissions for a Greener Planet',
+  subtitle: 'Invest in cleaner future',
   description: `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
     ut labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
     incididunt ut labore et
   `,
   button: {
-    left: "Get started",
-    right: "Explore"
+    left: 'Get started',
+    right: 'Explore'
   }
-}
+};
 
 const cleanerTomorrow = {
-  title: "For a Cleaner Tomorrow",
-  stepPrefix: "Step",
+  title: 'For a Cleaner Tomorrow',
+  stepPrefix: 'Step',
   steps: [
     {
-      title: "Calculate your carbon footprint",
+      title: 'Calculate your carbon footprint',
       description: `
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
         labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
@@ -25,7 +25,7 @@ const cleanerTomorrow = {
       `
     },
     {
-      title: "Browse & fund your favorite projects",
+      title: 'Browse & fund your favorite projects',
       description: `
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
         labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
@@ -33,7 +33,7 @@ const cleanerTomorrow = {
       `
     },
     {
-      title: "Watch your impact grow every month",
+      title: 'Watch your impact grow every month',
       description: `
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
         labore et Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
@@ -41,41 +41,41 @@ const cleanerTomorrow = {
       `
     }
   ]
-}
+};
 
 const exploreProjects = {
-  title: "Explore Projects",
+  title: 'Explore Projects',
   description: `
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
     labore et 
   `,
   button: {
-    showMore: "Show more",
-    purchase: "Purchase"
+    showMore: 'Show more',
+    purchase: 'Purchase'
   },
-  projectAmtSuffix: "Projects"
-}
+  projectAmtSuffix: 'Projects'
+};
 
 const socialProof = [
   {
-    number: "24+",
-    description: "Projects across ASEAN"
+    number: '24+',
+    description: 'Projects across ASEAN'
   },
   {
-    number: "17k",
-    description: "Go greeners and counting"
+    number: '17k',
+    description: 'Go greeners and counting'
   },
   {
-    number: "25",
+    number: '25',
     tco2e: true,
-    description: "Carbon offset"
+    description: 'Carbon offset'
   }
-]
+];
 
 const callToAction = {
-  pitch: "Adventures start with a step forward. Make it your own.",
-  button: "Get started"
-}
+  pitch: 'Adventures start with a step forward. Make it your own.',
+  button: 'Get started'
+};
 
 export default {
   headline,
@@ -83,4 +83,4 @@ export default {
   exploreProjects,
   socialProof,
   callToAction
-}
+};

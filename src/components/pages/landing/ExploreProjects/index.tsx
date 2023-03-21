@@ -23,9 +23,11 @@ const TextContainer = styled.div`
   align-items: center;
   gap: 24px;
 
-  h2 { color: ${color.neutral10} }
+  h2 {
+    color: ${color.neutral10};
+  }
 
-  p { 
+  p {
     color: ${color.neutral7};
     width: 530px;
     text-align: center;
@@ -48,30 +50,20 @@ const Footer = styled.div`
   }
 `;
 
-export default ({ projects }: {
-  projects: API.Project[]
-}) => (
+export default ({ projects }: { projects: API.Project[] }) => (
   <Wrapper id="explore-project">
     <TextContainer>
-      <h2 className="title-large">
-        {locale.landing.exploreProjects.title}
-      </h2>
+      <h2 className="title-large">{locale.landing.exploreProjects.title}</h2>
 
-      <p className="body-small">
-        {locale.landing.exploreProjects.description}
-      </p>
+      <p className="body-small">{locale.landing.exploreProjects.description}</p>
     </TextContainer>
 
     <ProjectCarousel data={projects} />
 
     <Footer>
-      <Button inverted>
-        {locale.landing.exploreProjects.button.showMore}
-      </Button>
+      <Button inverted>{locale.landing.exploreProjects.button.showMore}</Button>
 
-      <p>
-        120 {locale.landing.exploreProjects.projectAmtSuffix}
-      </p>
+      <p>120 {locale.landing.exploreProjects.projectAmtSuffix}</p>
     </Footer>
   </Wrapper>
 );

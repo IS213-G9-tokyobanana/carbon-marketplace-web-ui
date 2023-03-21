@@ -33,7 +33,10 @@ const TextContainer = styled.div`
   flex-direction: column;
   align-items: start;
 
-  h2, h1 { color: ${color.neutral10} }
+  h2,
+  h1 {
+    color: ${color.neutral10};
+  }
 
   p {
     margin: 16px 0;
@@ -52,13 +55,13 @@ export default () => {
   const router = useRouter();
 
   const goToOnboard = () => {
-    router.push("/onboard");
-  }
+    router.push('/onboard');
+  };
 
   const scrollToExplore = () => {
-    const element = document.getElementById("explore-project");
-    element?.scrollIntoView({ behavior: "smooth" });
-  }
+    const element = document.getElementById('explore-project');
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <Wrapper>
@@ -66,19 +69,12 @@ export default () => {
         <Image />
       </ImageContainer>
 
-
       <TextContainer>
-        <h2 className="subtitle-small">
-          {locale.landing.headline.subtitle}
-        </h2>
+        <h2 className="subtitle-small">{locale.landing.headline.subtitle}</h2>
 
-        <h1 className="title-large">
-          {locale.landing.headline.title}
-        </h1>
+        <h1 className="title-large">{locale.landing.headline.title}</h1>
 
-        <p className="body-large">
-          {locale.landing.headline.description}
-        </p>
+        <p className="body-large">{locale.landing.headline.description}</p>
 
         <ButtonGroup>
           <Button classic onClick={goToOnboard}>
@@ -92,4 +88,4 @@ export default () => {
       </TextContainer>
     </Wrapper>
   );
-}
+};

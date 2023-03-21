@@ -7,9 +7,9 @@ import fonts from 'fonts';
 
 import Header from '../components/Header';
 
-
 const App = styled.main`
   --header-height: 70px;
+  --font-inter: ${fonts.inter.style.fontFamily};
 
   * {
     font-family: ${fonts.dmSans.style.fontFamily};
@@ -19,9 +19,7 @@ const App = styled.main`
 export default ({ Component, pageProps }: AppProps) => {
   return (
     <>
-      <Head>
-        {/* <title>Enter site title here</title> */}
-      </Head>
+      <Head>{/* <title>Enter site title here</title> */}</Head>
 
       <App>
         <Header />
@@ -30,4 +28,4 @@ export default ({ Component, pageProps }: AppProps) => {
       </App>
     </>
   );
-}
+};

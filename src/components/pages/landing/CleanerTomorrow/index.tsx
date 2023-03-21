@@ -30,18 +30,12 @@ const StepGroup = styled.div`
 
 export default () => (
   <Wrapper>
-    <Title>
-      {locale.landing.cleanerTomorrow.title}
-    </Title>
+    <Title>{locale.landing.cleanerTomorrow.title}</Title>
 
     <StepGroup>
-      {config.landing.cleanerSteps.map((v, i) =>
-        <Step
-          key={i}
-          order={i + 1}
-          {...v}
-        />
-      )}
+      {config.landing.cleanerSteps.map((v, i) => (
+        <Step key={i} order={i + 1} {...v} />
+      ))}
     </StepGroup>
   </Wrapper>
 );

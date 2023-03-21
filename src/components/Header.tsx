@@ -19,7 +19,7 @@ const Container = styled.div`
   max-width: var(--page-max-width);
   margin: 0 auto;
   padding: 10px var(--page-padding-h);
-  
+
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -33,7 +33,7 @@ const Logo = styled.div`
 
   h1 {
     font-size: 20px;
-    color: ${config.color.neutral8}
+    color: ${config.color.neutral8};
   }
 `;
 
@@ -42,50 +42,48 @@ const Nav = styled.nav`
   align-items: center;
   gap: 48px;
 
-  a { color: ${config.color.neutral10} }
+  a {
+    color: ${config.color.neutral10};
+  }
 `;
 
 export default () => {
   const router = useRouter();
 
   const handleLogoClick = () => {
-    router.push("/");
-  }
+    router.push('/');
+  };
 
   const handleButtonClick = () => {
-    if (router.asPath === "/") {
-      router.push("/onboard");
+    switch (router.asPath) {
+      case '/':
+        router.push('/onboard');
+        break;
     }
-  }
+  };
 
   return (
     <Wrapper>
       <Container>
         <Logo onClick={handleLogoClick}>
           <TokyoBanana />
-          <h1>
-            {locale.brand}
-          </h1>
+          <h1>{locale.brand}</h1>
         </Logo>
 
         <Nav>
-          {config.navs.map(v =>
+          {config.navs.map((v) => (
             <Link key={v.title} href={v.url}>
               {v.title}
             </Link>
-          )}
+          ))}
 
-          <Button
-            classic
-            onClick={handleButtonClick}
-          >
-            {router.asPath === "/onboard" ?
-              locale.header.button.login :
-              locale.header.button.cta
-            }
+          <Button classic onClick={handleButtonClick}>
+            {router.asPath === '/' && locale.header.button.cta}
+            {router.asPath === '/onboard' && locale.header.button.login}
+            {!!router.asPath.match('/buyer') && locale.header.button.dashboard}
           </Button>
         </Nav>
       </Container>
     </Wrapper>
   );
-}
+};

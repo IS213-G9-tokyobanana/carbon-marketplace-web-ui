@@ -22,7 +22,9 @@ const TextContainer = styled.div`
   align-items: start;
   gap: 40px;
 
-  h1 { color: ${color.neutral10} }
+  h1 {
+    color: ${color.neutral10};
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -41,20 +43,15 @@ export default () => {
   const router = useRouter();
 
   const handleButtonClick = () => {
-    router.push("/onboard");
-  }
+    router.push('/onboard');
+  };
 
   return (
     <Wrapper>
       <TextContainer>
-        <h1 className="title-large">
-          {locale.landing.callToAction.pitch}
-        </h1>
+        <h1 className="title-large">{locale.landing.callToAction.pitch}</h1>
 
-        <Button
-          classic
-          onClick={handleButtonClick}
-        >
+        <Button classic onClick={handleButtonClick}>
           {locale.landing.callToAction.button}
         </Button>
       </TextContainer>
@@ -64,4 +61,4 @@ export default () => {
       </ImageContainer>
     </Wrapper>
   );
-}
+};

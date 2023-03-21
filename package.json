@@ -6,13 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "npx prettier --ignore-path .gitignore --write ./src/**/*.{ts,tsx}"
   },
   "dependencies": {
+    "gsap": "^3.11.4",
     "next": "13.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "styled-components": "^5.3.8"
+    "react-responsive": "^9.0.2",
+    "recharts": "^2.5.0",
+    "styled-components": "^5.3.8",
+    "zustand": "^4.3.6"
   },
   "devDependencies": {
     "@types/node": "18.15.0",
@@ -21,6 +26,8 @@
     "@types/styled-components": "^5.1.26",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "eslint-config-prettier": "^8.7.0",
+    "prettier": "2.8.4",
     "typescript": "4.9.5"
   }
 }

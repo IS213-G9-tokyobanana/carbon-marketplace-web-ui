@@ -12,7 +12,9 @@ const Wrapper = styled.section`
   justify-content: space-between;
   gap: 24px;
 
-  & > * { width: 100% }
+  & > * {
+    width: 100%;
+  }
 `;
 
 const Card = styled.div`
@@ -23,31 +25,33 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  
-  p { color: ${color.neutral10} }
 
-  span { margin: 0 16px }
+  p {
+    color: ${color.neutral10};
+  }
+
+  span {
+    margin: 0 16px;
+  }
 `;
 
 export default () => (
   <Wrapper>
-    {locale.landing.socialProof.map((v, i) =>
+    {locale.landing.socialProof.map((v, i) => (
       <Card key={i}>
         <p className="title-large">
           {v.number}
 
-          {v.tco2e &&
+          {v.tco2e && (
             <span
               className="title-small"
               dangerouslySetInnerHTML={{ __html: locale.tco2e }}
             />
-          }
+          )}
         </p>
 
-        <p className="body-large">
-          {v.description}
-        </p>
+        <p className="body-large">{v.description}</p>
       </Card>
-    )}
+    ))}
   </Wrapper>
 );

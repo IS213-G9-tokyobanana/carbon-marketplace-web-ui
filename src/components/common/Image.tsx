@@ -31,7 +31,6 @@ export const Mask = styled.div`
 `;
 
 export default () => {
-
   return (
     <Wrapper>
       <Mask>
@@ -40,5 +39,5 @@ export default () => {
 
       {/* <Image /> */}
     </Wrapper>
-  )
-}
+  );
+};

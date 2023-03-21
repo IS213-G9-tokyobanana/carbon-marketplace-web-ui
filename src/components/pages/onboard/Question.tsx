@@ -39,24 +39,17 @@ const Answer = styled.div`
 export default (props: API.Question) => {
   return (
     <Wrapper>
-      <p className="title-small">
-        {props.question}
-      </p>
+      <p className="title-small">{props.question}</p>
 
-      <p className="subtitle-small">
-        {props.description}
-      </p>
+      <p className="subtitle-small">{props.description}</p>
 
       <AnswerGroup>
-        {props.answers.map((v, i) =>
-          <Answer
-            key={`${props.id}${i}`}
-            className="body-large"
-          >
+        {props.answers.map((v, i) => (
+          <Answer key={`${props.id}${i}`} className="body-large">
             {v}
           </Answer>
-        )}
+        ))}
       </AnswerGroup>
     </Wrapper>
   );
-}
+};

@@ -14,9 +14,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-export default ({ projects }: {
-  projects: API.Project[]
-}) => {
+export default ({ projects }: { projects: API.Project[] }) => {
   return (
     <Wrapper>
       <MainHeadline />
@@ -30,7 +28,7 @@ export default ({ projects }: {
       <CallToAction />
     </Wrapper>
   );
-}
+};
 
 export async function getServerSideProps() {
   const projects = api.getProjects();
@@ -39,5 +37,5 @@ export async function getServerSideProps() {
     props: {
       projects
     }
-  }
+  };
 }

@@ -14,9 +14,11 @@ const Wrapper = styled.div`
 `;
 
 const TextContainer = styled.div`
-  p { color: ${color.neutral10} }
+  p {
+    color: ${color.neutral10};
+  }
 
-  p.body-large { 
+  p.body-large {
     margin-top: 16px;
     color: ${color.neutral7};
   }
@@ -34,23 +36,21 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `;
 
-export default ({ order, ...props }: {
-  order: number
-} & CleanerStepItem
-) => (
+export default ({
+  order,
+  ...props
+}: {
+  order: number;
+} & CleanerStepItem) => (
   <Wrapper>
     <TextContainer>
       <p className="body-large">
         {locale.landing.cleanerTomorrow.stepPrefix} {order}:
       </p>
 
-      <p className="title-small">
-        {props.title}
-      </p>
+      <p className="title-small">{props.title}</p>
 
-      <p className="body-large">
-        {props.description}
-      </p>
+      <p className="body-large">{props.description}</p>
     </TextContainer>
 
     <ImageContainer>
