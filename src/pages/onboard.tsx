@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
+import { color } from 'config';
 import api from 'api';
 import { API } from 'types';
 
-import CarbonFootprint from 'components/pages/onboard/CarbonFootprint';
+import CarbonFootprint, {
+  Wrapper as $CarbonFootprint,
+  Comparison as $CarbonFootprint__Comparison,
+} from 'components/CarbonFootprint';
 import ScrollList from 'components/pages/onboard/ScrollList';
 import Question from 'components/pages/onboard/Question';
 
@@ -20,6 +24,22 @@ const Wrapper = styled.div`
   display: flex;
   align-items: start;
   gap: min(5vw, 100px);
+
+  ${$CarbonFootprint} {
+    margin: var(--section-padding-v) 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    width: 230px;
+    padding: 32px 24px;
+    background: ${color.neutral1};
+    border-radius: 10px;
+
+    ${$CarbonFootprint__Comparison} {
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
 `;
 
 export default ({ questions }: { questions: API.Question[] }) => {
@@ -31,7 +51,7 @@ export default ({ questions }: { questions: API.Question[] }) => {
 
       <Question {...question} />
 
-      <CarbonFootprint carbonIndex={10.4} />
+      <CarbonFootprint />
     </Wrapper>
   );
 };
