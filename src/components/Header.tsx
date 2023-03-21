@@ -80,7 +80,7 @@ export default () => {
           <Button classic onClick={handleButtonClick}>
             {router.asPath === '/' && locale.header.button.cta}
             {router.asPath === '/onboard' && locale.header.button.login}
-            {!!router.asPath.match('/buyer') && locale.header.button.dashboard}
+            {/* {!!router.asPath.match('/buyer') && locale.header.button.dashboard} */}
           </Button>
         </Nav>
       </Container>
