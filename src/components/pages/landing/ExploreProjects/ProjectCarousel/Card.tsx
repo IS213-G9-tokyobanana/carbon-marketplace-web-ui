@@ -32,6 +32,9 @@ const FlexRow = styled.div`
 
   p {
     color: ${color.neutral10};
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 `;
 
@@ -47,11 +50,6 @@ const ImageContainer = styled.div`
   ${$ImageMask} {
     background: ${color.neutral0};
   }
-`;
-
-const ProjectOffsetContainer = styled.p`
-  display: flex;
-  gap: 8px;
 `;
 
 export default (props: API.Project) => {
@@ -76,10 +74,10 @@ export default (props: API.Project) => {
       </ImageContainer>
 
       <FlexRow>
-        <ProjectOffsetContainer className="body-small">
+        <p className="body-small">
           <span>{props.tco2e}</span>
           <span dangerouslySetInnerHTML={{ __html: locale.tco2e }} />
-        </ProjectOffsetContainer>
+        </p>
 
         <Button inverted>{locale.landing.exploreProjects.button.purchase}</Button>
       </FlexRow>
