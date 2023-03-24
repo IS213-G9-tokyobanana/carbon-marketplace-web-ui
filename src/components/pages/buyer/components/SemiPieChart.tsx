@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import { Pie, PieChart, ResponsiveContainer } from 'recharts';
 
 import { color } from 'config';
-import PieLegend, { Wrapper as $PieLegend, Label as $PieLegend__Label } from './PieLegend';
+import PieLegend, {
+  Wrapper as $PieLegend,
+  Label as $PieLegend__Label,
+} from './PieLegend';
 
 type Item = {
   name: string;
@@ -63,7 +66,11 @@ const Percentage = styled.div`
   }
 `;
 
-export default ({ title, data, percentage }: {
+export default ({
+  title,
+  data,
+  percentage,
+}: {
   title: string;
   data: Item[];
   percentage: number;

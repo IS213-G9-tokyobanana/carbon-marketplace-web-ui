@@ -40,18 +40,19 @@ const MilesNote = styled.div`
   align-items: end;
 `;
 
-export default ({ monthYear, tonsOfCO2, miles }: {
+export default ({
+  monthYear,
+  tonsOfCO2,
+  miles,
+}: {
   monthYear: string;
   tonsOfCO2: string;
   miles: string;
 }) => {
-  const _monthYear = locale.buyer.monthlyOffset[0].replace(
-    '{{ 1 }}',
-    monthYear
-  );
+  const _monthYear = locale.buyer.monthlyOffset[0].replace('{{ 1 }}', monthYear);
   const _miles = locale.buyer.monthlyOffset[2].replace(
     '{{ 1 }}',
-    `<span>${miles} miles</span>`
+    `<span>${miles} miles</span>`,
   );
 
   return (
@@ -68,10 +69,7 @@ export default ({ monthYear, tonsOfCO2, miles }: {
       </Container>
 
       <MilesNote>
-        <p
-          className="body-small"
-          dangerouslySetInnerHTML={{ __html: _miles }}
-        />
+        <p className="body-small" dangerouslySetInnerHTML={{ __html: _miles }} />
       </MilesNote>
     </Wrapper>
   );

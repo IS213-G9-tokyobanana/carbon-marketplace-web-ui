@@ -5,7 +5,11 @@ import { Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 import { color } from 'config';
 import { applyStyleIf } from 'utils';
 
-import PieLegend, { Wrapper as $PieLegend, Label as $PieLegend__Label, Name as $PieLegend__Name } from './PieLegend';
+import PieLegend, {
+  Wrapper as $PieLegend,
+  Label as $PieLegend__Label,
+  Name as $PieLegend__Name,
+} from './PieLegend';
 
 type Item = {
   name: string;
@@ -15,7 +19,8 @@ type Item = {
 
 type Style = 'horizontal' | 'vertical';
 
-export const Wrapper = styled.div(({ $style }: { $style: Style }) => `
+export const Wrapper = styled.div(
+  ({ $style }: { $style: Style }) => `
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -29,13 +34,18 @@ export const Wrapper = styled.div(({ $style }: { $style: Style }) => `
     color: ${color.neutral10};
   }
 
-  ${applyStyleIf($style === 'vertical', `
+  ${applyStyleIf(
+    $style === 'vertical',
+    `
     align-items: center;
     gap: 4px;
-  `)}
-`);
+  `,
+  )}
+`,
+);
 
-const Container = styled.div(({ $style }: { $style: Style }) => `
+const Container = styled.div(
+  ({ $style }: { $style: Style }) => `
   position: relative;
   display: flex;
   align-items: center;
@@ -54,7 +64,9 @@ const Container = styled.div(({ $style }: { $style: Style }) => `
     width: 120px;
   }
 
-  ${applyStyleIf($style === 'vertical', `
+  ${applyStyleIf(
+    $style === 'vertical',
+    `
     flex-direction: column;
     gap: 20px;
 
@@ -65,10 +77,16 @@ const Container = styled.div(({ $style }: { $style: Style }) => `
     ${$PieLegend__Name} {
       flex-grow: 1;
     }
-  `)}
-`);
+  `,
+  )}
+`,
+);
 
-export default ({ title, data, style }: {
+export default ({
+  title,
+  data,
+  style,
+}: {
   title: string;
   data: Item[];
   style: Style;
@@ -101,7 +119,7 @@ export default ({ title, data, style }: {
             stroke="rounded"
           />
 
-          <Tooltip formatter={v => `${v}%`} />
+          <Tooltip formatter={(v) => `${v}%`} />
         </PieChart>
       </ResponsiveContainer>
 

@@ -7,7 +7,7 @@ import {
   XAxis,
   YAxis,
   Bar,
-  LabelList
+  LabelList,
 } from 'recharts';
 
 import { color } from 'config';
@@ -58,7 +58,7 @@ export default ({
   data,
   color1,
   color2,
-  yAxisUnit
+  yAxisUnit,
 }: {
   title: string;
   data: Item[];
@@ -81,7 +81,7 @@ export default ({
 
       return prev;
     },
-    [0, 0]
+    [0, 0],
   );
 
   const format = (value: string, type: 'insideTop' | 'top') => {

@@ -1,11 +1,19 @@
 import landing from './landing';
 import buyer from './buyer';
+import projectList from './project-list';
 
 export default {
   brand: 'TokyoBanana',
-  tco2e: 'tCO<sub>2</sub>e',
+  tco2e: {
+    token: 'tCO<sub>2</sub>e',
+    denominator: '/ 10',
+  },
   header: {
-    navs: ['Our Approach', 'Projects', 'Work with us'],
+    navs: {
+      approach: 'Our Approach',
+      projects: 'Projects',
+      workWithUs: 'Work with us',
+    },
     button: {
       cta: 'Get started',
       login: 'Login',
@@ -20,4 +28,5 @@ export default {
 
   landing,
   buyer,
+  projectList,
 };
