@@ -19,11 +19,6 @@ const cleanerSteps: CleanerStepItem[] = [
   },
 ];
 
-const exploreProjects = {
-  maxTitleLength: 25,
-};
-
 export default {
   cleanerSteps,
-  exploreProjects,
 };

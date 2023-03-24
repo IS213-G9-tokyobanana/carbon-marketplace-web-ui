@@ -29,22 +29,20 @@ const viewport: Viewport = {
 
 const navs: NavItem[] = [
   {
-    title: locale.header.navs[0],
+    title: locale.header.navs.approach,
     url: 'https://google.com',
   },
   {
-    title: locale.header.navs[1],
-    url: 'https://google.com',
+    title: locale.header.navs.projects,
+    url: '/project-list',
   },
   {
-    title: locale.header.navs[2],
+    title: locale.header.navs.workWithUs,
     url: 'https://google.com',
   },
 ];
 
-const sidebar: {
-  buyer: SidebarConfig;
-} = {
+const sidebar: { buyer: SidebarConfig } = {
   buyer: [
     [
       {
@@ -71,6 +69,7 @@ export default {
   color,
   viewport,
   navs,
+
   sidebar,
   landing,
 };

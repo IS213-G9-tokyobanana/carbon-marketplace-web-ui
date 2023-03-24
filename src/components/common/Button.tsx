@@ -2,26 +2,24 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { color } from 'config';
+import { IntrinsicHTML } from 'types';
 
 export const Wrapper = styled.button(
-  ({
-    $textColor,
-    $bgColor,
-    $borderColor,
-    ...props
-  }: {
-    $textColor: string;
-    $bgColor: string;
-    $borderColor: string;
-  } & Omit<JSX.IntrinsicElements['button'], 'ref'>) => `
+  (
+    props: {
+      $textColor: string;
+      $bgColor: string;
+      $borderColor: string;
+    } & IntrinsicHTML<'button'>,
+  ) => `
   padding: 12px 20px;
   border-radius: 50px;
-  border: 1px solid ${$borderColor};
+  border: 1px solid ${props.$borderColor};
   outline: none;
   cursor: ${props.onClick ? 'pointer' : 'auto'};
 
-  background: ${$bgColor};
-  color: ${$textColor};
+  background: ${props.$bgColor};
+  color: ${props.$textColor};
   font-size: 16px;
 `,
 );
@@ -44,7 +42,8 @@ export default React.forwardRef(
     }: {
       children: string | JSX.Element | Array<string | JSX.Element | boolean>;
     } & ButtonStyle &
-      Omit<JSX.IntrinsicElements['button'], 'ref'>,
+      IntrinsicHTML<'button'>,
+
     ref: React.ForwardedRef<HTMLButtonElement>,
   ) => {
     let textColor, bgColor, borderColor;
