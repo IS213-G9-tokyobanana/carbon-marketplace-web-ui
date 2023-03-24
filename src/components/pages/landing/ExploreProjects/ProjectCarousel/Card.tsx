@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config, { color } from 'config';
+import { color } from 'config';
 import locale from 'locale';
 import { API } from 'types';
 
@@ -10,6 +10,7 @@ import Button from 'components/common/Button';
 import Image, { Mask as $ImageMask } from 'components/common/Image';
 
 const Wrapper = styled.div`
+  min-width: 0;
   padding: 28px 21px;
   background: ${color.neutral1};
   border-radius: 24px;
@@ -23,17 +24,21 @@ const FlexRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 
   h4 {
     color: ${color.neutral10};
     font-weight: 700;
     letter-spacing: -3%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   p {
     color: ${color.neutral10};
     display: flex;
-    align-items: center;
+    align-items: start;
     gap: 10px;
   }
 `;
@@ -53,18 +58,10 @@ const ImageContainer = styled.div`
 `;
 
 export default (props: API.Project) => {
-  const title =
-    props.title.length > config.landing.exploreProjects.maxTitleLength
-      ? `${props.title.substring(
-          0,
-          config.landing.exploreProjects.maxTitleLength - 3,
-        )}...`
-      : props.title;
-
   return (
     <Wrapper>
       <FlexRow>
-        <h4 className="body-large">{title}</h4>
+        <h4 className="body-large">{props.title}</h4>
 
         <Heart />
       </FlexRow>
@@ -75,8 +72,11 @@ export default (props: API.Project) => {
 
       <FlexRow>
         <p className="body-small">
-          <span>{props.tco2e}</span>
-          <span dangerouslySetInnerHTML={{ __html: locale.tco2e }} />
+          <span>
+            {props.tco2e} {locale.tco2e.denominator}
+          </span>
+
+          <span dangerouslySetInnerHTML={{ __html: locale.tco2e.token }} />
         </p>
 
         <Button inverted>{locale.landing.exploreProjects.button.purchase}</Button>
