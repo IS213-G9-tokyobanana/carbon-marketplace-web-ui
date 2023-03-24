@@ -1,5 +1,5 @@
 import landing from './landing';
-// import buyer from './buyer';
+import buyer from './buyer';
 
 export default {
   brand: 'TokyoBanana',
@@ -19,5 +19,5 @@ export default {
   },
 
   landing,
-  // buyer,
+  buyer,
 };

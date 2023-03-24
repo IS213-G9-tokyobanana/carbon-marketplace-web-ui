@@ -2,12 +2,25 @@ export type NavItem = {
   title: string;
   url: string;
 };
+export type Viewport = {
+  xs?: undefined;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+};
 
 export type CleanerStepItem = {
   title: string;
   description: string;
   imgSrc: string;
 };
+
+export type SidebarConfig = {
+  icon: JSX.Element;
+  title: string;
+  url?: string;
+}[][];
 
 /**
  * API
