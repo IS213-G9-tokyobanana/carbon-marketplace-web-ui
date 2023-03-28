@@ -17,7 +17,7 @@ const Circle = styled.div(
   background: ${$color};
   border-radius: 50%;
   box-shadow: 0 2px 2px 0 #0000001a;
-`
+`,
 );
 
 const Label = styled.div`

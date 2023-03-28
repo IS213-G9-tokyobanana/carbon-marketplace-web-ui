@@ -8,7 +8,7 @@ import {
   LabelList,
   ResponsiveContainer,
   XAxis,
-  YAxis
+  YAxis,
 } from 'recharts';
 
 import { color } from 'config';

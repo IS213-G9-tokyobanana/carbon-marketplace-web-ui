@@ -10,26 +10,20 @@ export const Wrapper = styled.svg(
   width: auto;
   display: block;
 
-  path {
-    transform-origin: center;
-    transform: rotate(${$deg}deg);
-  }
-`
+  transform-origin: center;
+  transform: rotate(${$deg}deg);
+`,
 );
 
-export default ({
-  direction
-}: {
-  direction: 'up' | 'down' | 'left' | 'right';
-}) => {
+export default ({ direction }: { direction: 'up' | 'down' | 'left' | 'right' }) => {
   let deg = 0;
 
   switch (direction) {
     case 'up':
-      deg = -90;
+      deg = 90;
       break;
     case 'down':
-      deg = 90;
+      deg = -90;
       break;
     case 'left':
       deg = 180;

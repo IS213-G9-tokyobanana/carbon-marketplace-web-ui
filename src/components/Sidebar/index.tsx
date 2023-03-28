@@ -44,9 +44,9 @@ const Item = styled.div(
     $active,
     `
     background: ${color.neutral1};
-  `
+  `,
   )}
-`
+`,
 );
 
 const TitleContainer = styled.div`
@@ -103,10 +103,7 @@ export default ({ data }: { data: SidebarConfig }) => {
               {v.icon}
 
               <TitleContainer ref={(d) => d && containers.current.push(d)}>
-                <Title
-                  ref={(d) => d && titles.current.push(d)}
-                  className="body-small"
-                >
+                <Title ref={(d) => d && titles.current.push(d)} className="body-small">
                   {v.title}
                 </Title>
               </TitleContainer>

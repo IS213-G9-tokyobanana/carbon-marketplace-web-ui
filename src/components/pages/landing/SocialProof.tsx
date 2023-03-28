@@ -45,7 +45,7 @@ export default () => (
           {v.tco2e && (
             <span
               className="title-small"
-              dangerouslySetInnerHTML={{ __html: locale.tco2e }}
+              dangerouslySetInnerHTML={{ __html: locale.tco2e.token }}
             />
           )}
         </p>

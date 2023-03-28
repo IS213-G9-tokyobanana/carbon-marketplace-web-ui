@@ -26,7 +26,7 @@ const Circle = styled.div(
   height: 6px;
   width: auto;
   border-radius: 50%;
-`
+`,
 );
 
 export const Name = styled.div`
@@ -41,10 +41,7 @@ type Item = {
   fill: string;
 };
 
-export default ({ data, valueSuffix }: {
-  data: Item[];
-  valueSuffix: string;
-}) => (
+export default ({ data, valueSuffix }: { data: Item[]; valueSuffix: string }) => (
   <Wrapper>
     {data.map((d) => (
       <Label key={d.name}>

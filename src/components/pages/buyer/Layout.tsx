@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import config, { color } from 'config';
 
 import Sidebar from 'components/Sidebar';
-import CarbonFootprint, { Wrapper as $CarbonFootprint } from 'components/CarbonFootprint';
+import CarbonFootprint, {
+  Wrapper as $CarbonFootprint,
+} from 'components/CarbonFootprint';
 
 const Wrapper = styled.div`
   --section-padding-v: 32px;
@@ -40,21 +42,17 @@ const DashboardContainer = styled.div`
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    
+
     width: calc(var(--page-max-width) - 2 * var(--page-padding-h));
     padding: 24px 0;
   }
 `;
 
-export default ({ children }: {
-  children: JSX.Element | JSX.Element[],
-}) => (
+export default ({ children }: { children: JSX.Element | JSX.Element[] }) => (
   <Wrapper>
     <Sidebar data={config.sidebar.buyer} />
 
-    <DashboardContainer>
-      {children}
-    </DashboardContainer>
+    <DashboardContainer>{children}</DashboardContainer>
 
     <CarbonFootprint />
   </Wrapper>

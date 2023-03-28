@@ -5,10 +5,16 @@ import { color } from 'config';
 import locale from 'locale';
 
 import DashboardGridLayout from 'components/pages/buyer/Layout';
-import MonthlyOffset, { Wrapper as $MonthlyOffset } from 'components/pages/buyer/components/MonthlyOffset';
-import SemiPieChart, { Wrapper as $SemiPieChart } from 'components/pages/buyer/components/SemiPieChart';
+import MonthlyOffset, {
+  Wrapper as $MonthlyOffset,
+} from 'components/pages/buyer/components/MonthlyOffset';
+import SemiPieChart, {
+  Wrapper as $SemiPieChart,
+} from 'components/pages/buyer/components/SemiPieChart';
 import PieChart from 'components/pages/buyer/components/PieChart';
-import BarChart, { Wrapper as $BarChart } from 'components/pages/buyer/components/BarChart';
+import BarChart, {
+  Wrapper as $BarChart,
+} from 'components/pages/buyer/components/BarChart';
 
 const Wrapper = styled.div`
   ${$MonthlyOffset}, ${$SemiPieChart} {
@@ -33,18 +39,18 @@ export default () => {
             {
               name: 'Carbon Capture',
               value: 30,
-              fill: color.neutral10
+              fill: color.neutral10,
             },
             {
               name: 'Local Green Initiative',
               value: 30,
-              fill: color.neutral6
+              fill: color.neutral6,
             },
             {
               name: 'Regional Green Initiatives',
               value: 30,
-              fill: color.neutral4
-            }
+              fill: color.neutral4,
+            },
           ]}
         />
 
@@ -55,13 +61,13 @@ export default () => {
             {
               name: 'Offset',
               value: 2.1,
-              fill: color.neutral9
+              fill: color.neutral9,
             },
             {
               name: 'Your Emissions',
               value: 10.4,
-              fill: color.neutral1
-            }
+              fill: color.neutral1,
+            },
           ]}
         />
 
@@ -70,24 +76,24 @@ export default () => {
           data={[
             {
               name: 'UK',
-              value: 18.3
+              value: 18.3,
             },
             {
               name: 'USA',
-              value: 18.3
+              value: 18.3,
             },
             {
               name: 'You',
-              value: 1.4
+              value: 1.4,
             },
             {
               name: 'Asia',
-              value: 3.4
+              value: 3.4,
             },
             {
               name: 'World',
-              value: 4.9
-            }
+              value: 4.9,
+            },
           ]}
         />
       </DashboardGridLayout>
