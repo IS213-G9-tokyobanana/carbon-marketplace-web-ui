@@ -50,4 +50,23 @@ export namespace API {
     description: string;
     answers: string[];
   };
+
+  export type Status = 'pending' | 'verified' | 'rejected' | 'in-progress' | 'inactive';
+
+  export type Milestone = {
+    id: string;
+    name: string;
+    expectedCO2: number;
+    currentCO2: number;
+    lastUpdated: string;
+    status: Status;
+  };
+
+  export type VerifiableProject = {
+    id: string;
+    name: string;
+    type: string;
+    milestones: Milestone[];
+    status: Status;
+  };
 }

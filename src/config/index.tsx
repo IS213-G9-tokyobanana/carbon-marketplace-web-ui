@@ -1,5 +1,6 @@
 import locale from 'locale';
 import landing from './landing';
+import verifier from './verifier';
 
 import { NavItem, SidebarConfig, Viewport } from 'types';
 
@@ -42,18 +43,41 @@ const navs: NavItem[] = [
   },
 ];
 
-const sidebar: { buyer: SidebarConfig } = {
+const sidebar: {
+  buyer: SidebarConfig;
+  verifier: SidebarConfig;
+} = {
   buyer: [
     [
       {
         icon: <PieChart />,
-        title: 'My Stats',
+        title: locale.sidebar.myStats,
         url: '/buyer/my-stats',
       },
       {
         icon: <Document />,
-        title: 'Impact Report',
+        title: locale.sidebar.impactReport,
         url: '/buyer/impact-report',
+      },
+    ],
+    [
+      {
+        icon: <Cog />,
+        title: locale.sidebar.settings,
+      },
+    ],
+  ],
+
+  verifier: [
+    [
+      {
+        icon: <PieChart />,
+        title: locale.sidebar.myTasks,
+        url: '/verifier/my-tasks',
+      },
+      {
+        icon: <Document />,
+        title: locale.sidebar.notifications,
       },
     ],
     [
@@ -72,4 +96,5 @@ export default {
 
   sidebar,
   landing,
+  verifier,
 };

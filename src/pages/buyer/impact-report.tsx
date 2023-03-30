@@ -1,22 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { color } from 'config';
+import config, { color } from 'config';
 import locale from 'locale';
 
-import DashboardGridLayout from 'components/pages/buyer/Layout';
+import DashboardLayout from 'components/DashboardLayout';
 import MonthlyOffset, {
   Wrapper as $MonthlyOffset,
-} from 'components/pages/buyer/components/MonthlyOffset';
+} from 'components/pages/buyer/MonthlyOffset';
 import SemiPieChart, {
   Wrapper as $SemiPieChart,
-} from 'components/pages/buyer/components/SemiPieChart';
-import PieChart from 'components/pages/buyer/components/PieChart';
-import BarChart, {
-  Wrapper as $BarChart,
-} from 'components/pages/buyer/components/BarChart';
+} from 'components/pages/buyer/SemiPieChart';
+import PieChart from 'components/pages/buyer/PieChart';
+import BarChart, { Wrapper as $BarChart } from 'components/pages/buyer/BarChart';
 
-const Wrapper = styled.div`
+const Container = styled.div`
+  flex-grow: 1;
+
+  padding: 24px;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: min-content;
+  align-items: start;
+  gap: 16px;
+
   ${$MonthlyOffset}, ${$SemiPieChart} {
     height: 100%;
   }
@@ -24,12 +34,21 @@ const Wrapper = styled.div`
   ${$BarChart} {
     grid-column: 1 / span 3;
   }
+
+  @media screen and (min-width: ${config.viewport.xl}) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: calc(var(--page-max-width) - 2 * var(--page-padding-h));
+    padding: 24px 0;
+  }
 `;
 
 export default () => {
   return (
-    <Wrapper>
-      <DashboardGridLayout>
+    <DashboardLayout sidebarConfig={config.sidebar.buyer}>
+      <Container>
         <MonthlyOffset monthYear="Feb 2023" tonsOfCO2="2.1" miles="42,069" />
 
         <PieChart
@@ -96,7 +115,7 @@ export default () => {
             },
           ]}
         />
-      </DashboardGridLayout>
-    </Wrapper>
+      </Container>
+    </DashboardLayout>
   );
 };

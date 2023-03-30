@@ -5,7 +5,13 @@ export default {
   },
   controller: {
     searchPlaceholder: 'Search',
-    minMaxPlaceholder: 'Available tCO<sub>2</sub>e',
+    minMax: {
+      placeholder: 'Available tCO<sub>2</sub>e',
+      button: {
+        clear: 'Clear',
+        apply: 'Apply',
+      },
+    },
   },
   card: {
     button: {

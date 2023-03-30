@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { IntrinsicHTML } from 'types';
 import useAnimation from './useAnimation';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   position: absolute;
   z-index: 10;
   top: 100%;

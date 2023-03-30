@@ -1,24 +1,32 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { color } from 'config';
+import config, { color } from 'config';
 import locale from 'locale';
 
-import DashboardGridLayout from 'components/pages/buyer/Layout';
+import DashboardLayout from 'components/DashboardLayout';
 import AnnualEmission, {
   Wrapper as $AnnualEmission,
-} from 'components/pages/buyer/components/AnnualEmission';
-import PieChart, {
-  Wrapper as $PieChart,
-} from 'components/pages/buyer/components/PieChart';
-import BarChart, {
-  Wrapper as $BarChart,
-} from 'components/pages/buyer/components/BarChart';
+} from 'components/pages/buyer/AnnualEmission';
+import PieChart, { Wrapper as $PieChart } from 'components/pages/buyer/PieChart';
+import BarChart, { Wrapper as $BarChart } from 'components/pages/buyer/BarChart';
 import TwinBarChart, {
   Wrapper as $TwinBarChart,
-} from 'components/pages/buyer/components/TwinBarChart';
+} from 'components/pages/buyer/TwinBarChart';
 
-const Wrapper = styled.div`
+const Container = styled.div`
+  flex-grow: 1;
+
+  padding: 24px;
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: min-content;
+  align-items: start;
+  gap: 16px;
+
   ${$AnnualEmission} {
     height: 100%;
   }
@@ -34,12 +42,21 @@ const Wrapper = styled.div`
   ${$TwinBarChart} {
     grid-column: 1 / span 3;
   }
+
+  @media screen and (min-width: ${config.viewport.xl}) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: calc(var(--page-max-width) - 2 * var(--page-padding-h));
+    padding: 24px 0;
+  }
 `;
 
 export default () => {
   return (
-    <Wrapper>
-      <DashboardGridLayout>
+    <DashboardLayout sidebarConfig={config.sidebar.buyer}>
+      <Container>
         <AnnualEmission km="42069" />
 
         <PieChart
@@ -134,7 +151,7 @@ export default () => {
             },
           ]}
         />
-      </DashboardGridLayout>
-    </Wrapper>
+      </Container>
+    </DashboardLayout>
   );
 };

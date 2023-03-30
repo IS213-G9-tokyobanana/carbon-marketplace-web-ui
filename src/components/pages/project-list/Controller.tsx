@@ -49,7 +49,7 @@ export default (props: {
       />
 
       <Dropdown.MinMax
-        placeholderText={locale.projectList.controller.minMaxPlaceholder}
+        placeholderText={locale.projectList.controller.minMax.placeholder}
         min={props.min}
         max={props.max}
         range={[0, 10]}

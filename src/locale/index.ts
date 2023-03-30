@@ -1,6 +1,7 @@
 import landing from './landing';
 import buyer from './buyer';
 import projectList from './project-list';
+import verifier from './verifier';
 
 export default {
   brand: 'TokyoBanana',
@@ -25,8 +26,16 @@ export default {
     comparison: `That's {{ 1 }} less than the Singapore average.`,
     source: 'source',
   },
+  sidebar: {
+    myStats: 'My Stats',
+    impactReport: 'Impact Report',
+    myTasks: 'My Tasks',
+    notifications: 'Notifications',
+    settings: 'Settings',
+  },
 
   landing,
   buyer,
   projectList,
+  verifier,
 };

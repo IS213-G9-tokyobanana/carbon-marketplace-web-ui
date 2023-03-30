@@ -14,6 +14,11 @@ const nextConfig = {
         destination: '/buyer/my-stats',
         permanent: true,
       },
+      {
+        source: '/verifier',
+        destination: '/verifier/my-tasks',
+        permanent: true,
+      },
     ];
   },
 };

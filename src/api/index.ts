@@ -213,7 +213,93 @@ function getQuestions(): API.Question[] {
   ];
 }
 
+function getVerifiableProjects(): API.VerifiableProject[] {
+  return [
+    {
+      id: '132-123-123-123',
+      name: 'Some Project Title A',
+      type: 'Some Project Type',
+      milestones: [
+        {
+          id: '123-asd-123-asd',
+          name: 'Some really long milestone name',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+        },
+        {
+          id: '123-asd-123-as2',
+          name: 'Some really long milestone name',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+        },
+        {
+          id: '123-asd-123-as3',
+          name: 'Milestone',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'inactive',
+        },
+        {
+          id: '123-asd-123-as4',
+          name: 'Some milestone',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'in-progress',
+        },
+      ],
+      status: 'pending',
+    },
+    {
+      id: '132-123-123-12d',
+      name: 'Some Project Title A',
+      type: 'Some Project Type',
+      milestones: [
+        {
+          id: '123-asd-123-asd',
+          name: 'Some really long milestone name',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+        },
+        {
+          id: '123-asd-123-as2',
+          name: 'Some really long milestone name',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+        },
+        {
+          id: '123-asd-123-as3',
+          name: 'Milestone',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+        },
+        {
+          id: '123-asd-123-as4',
+          name: 'Some milestone',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+        },
+      ],
+      status: 'pending',
+    },
+  ];
+}
+
 export default {
   getProjects,
   getQuestions,
+  getVerifiableProjects,
 };
