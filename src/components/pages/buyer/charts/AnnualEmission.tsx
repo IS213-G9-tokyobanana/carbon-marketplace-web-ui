@@ -44,9 +44,7 @@ export default ({ km }: { km: string }) => {
       </ImageContainer>
 
       <p className="body-small">
-        <span>{_km}</span>
-        &nbsp;
-        {locale.buyer.annualEmission[2]}
+        <span>{_km}</span> {locale.buyer.annualEmission[2]}
       </p>
     </Wrapper>
   );

@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   overflow: hidden;
 `;
 
-const Progress = styled.div(
+const Bar = styled.div(
   ({ $width }: { $width: number }) => `
   position: absolute;
   top: 0;
@@ -36,7 +36,7 @@ const Text = styled.div`
 export default ({ progress, total }: { progress: number; total: number }) => {
   return (
     <Wrapper>
-      <Progress $width={(progress / total) * 100} />
+      <Bar $width={(progress / total) * 100} />
 
       <Text className="body-small">
         {progress} / {total}

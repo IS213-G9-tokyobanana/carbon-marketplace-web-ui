@@ -38,6 +38,12 @@ a {
   line-height: 22px;
 }
 
+.subtitle-large {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 32px;
+}
+
 .body-xs {
   font-weight: 400;
   font-size: 12px;
@@ -60,4 +66,9 @@ a {
   font-weight: 700;
   font-size: 72px;
   line-height: 72px;
+}
+
+.text-sm {
+  font-size: 14px;
+  line-height: 21px;
 }

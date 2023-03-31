@@ -1,3 +1,6 @@
+/**
+ * @prettier
+ */
 import locale from 'locale';
 import landing from './landing';
 import verifier from './verifier';
@@ -14,6 +17,7 @@ export const color = {
   neutral2: '#DEE5ED',
   neutral3: '#CED7E4',
   neutral4: '#BDCADB',
+  neutral5: '#ADBDD2',
   neutral6: '#9cb0c9',
   neutral7: '#8CA2C0',
   neutral8: '#7B95B7',
@@ -46,6 +50,7 @@ const navs: NavItem[] = [
 const sidebar: {
   buyer: SidebarConfig;
   verifier: SidebarConfig;
+  seller: SidebarConfig;
 } = {
   buyer: [
     [
@@ -78,6 +83,26 @@ const sidebar: {
       {
         icon: <Document />,
         title: locale.sidebar.notifications,
+      },
+    ],
+    [
+      {
+        icon: <Cog />,
+        title: 'Settings',
+      },
+    ],
+  ],
+
+  seller: [
+    [
+      {
+        icon: <PieChart />,
+        title: locale.sidebar.myProjects,
+        url: '/seller/my-projects',
+      },
+      {
+        icon: <Document />,
+        title: locale.sidebar.impactReport,
       },
     ],
     [

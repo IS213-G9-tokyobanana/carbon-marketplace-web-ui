@@ -6,8 +6,9 @@ import styled from 'styled-components';
 import locale from 'locale';
 import config, { color } from 'config';
 
-import Button from './common/Button';
-import TokyoBanana from './common/svg/TokyoBanana';
+import Button from '../common/Button';
+import TokyoBanana from '../common/svg/TokyoBanana';
+import useButton from './useButton';
 
 export const Wrapper = styled.header`
   height: var(--header-height);
@@ -50,22 +51,16 @@ const Nav = styled.nav`
 export default () => {
   const router = useRouter();
 
-  const handleLogoClick = () => {
-    router.push('/');
-  };
+  const { title, handleClick } = useButton();
 
-  const handleButtonClick = () => {
-    switch (router.asPath) {
-      case '/':
-        router.push('/onboard');
-        break;
-    }
+  const goToHome = () => {
+    router.push('/');
   };
 
   return (
     <Wrapper>
       <Container>
-        <Logo onClick={handleLogoClick}>
+        <Logo onClick={goToHome}>
           <TokyoBanana />
           <h1>{locale.brand}</h1>
         </Logo>
@@ -77,13 +72,8 @@ export default () => {
             </Link>
           ))}
 
-          <Button classic onClick={handleButtonClick}>
-            {router.asPath === '/' && locale.header.button.cta}
-            {router.asPath === '/onboard' && locale.header.button.login}
-
-            {!!router.asPath.match('/buyer') && locale.header.button.dashboard}
-            {!!router.asPath.match('/verifier') && locale.header.button.dashboard}
-            {router.asPath === '/project-list' && locale.header.button.dashboard}
+          <Button classic onClick={handleClick}>
+            {title}
           </Button>
         </Nav>
       </Container>

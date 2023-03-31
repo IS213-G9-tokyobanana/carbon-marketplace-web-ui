@@ -1,32 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config, { color } from 'config';
+import { color } from 'config';
 import locale from 'locale';
 
-import DashboardLayout from 'components/DashboardLayout';
+import Layout from 'components/pages/buyer/Layout';
 import AnnualEmission, {
   Wrapper as $AnnualEmission,
-} from 'components/pages/buyer/AnnualEmission';
-import PieChart, { Wrapper as $PieChart } from 'components/pages/buyer/PieChart';
-import BarChart, { Wrapper as $BarChart } from 'components/pages/buyer/BarChart';
+} from 'components/pages/buyer/charts/AnnualEmission';
+import PieChart, { Wrapper as $PieChart } from 'components/pages/buyer/charts/PieChart';
+import BarChart, { Wrapper as $BarChart } from 'components/pages/buyer/charts/BarChart';
 import TwinBarChart, {
   Wrapper as $TwinBarChart,
-} from 'components/pages/buyer/TwinBarChart';
+} from 'components/pages/buyer/charts/TwinBarChart';
 
-const Container = styled.div`
-  flex-grow: 1;
-
-  padding: 24px;
-  max-width: var(--page-max-width);
-  margin: 0 auto;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: min-content;
-  align-items: start;
-  gap: 16px;
-
+const Wrapper = styled.div`
   ${$AnnualEmission} {
     height: 100%;
   }
@@ -42,21 +30,12 @@ const Container = styled.div`
   ${$TwinBarChart} {
     grid-column: 1 / span 3;
   }
-
-  @media screen and (min-width: ${config.viewport.xl}) {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: calc(var(--page-max-width) - 2 * var(--page-padding-h));
-    padding: 24px 0;
-  }
 `;
 
 export default () => {
   return (
-    <DashboardLayout sidebarConfig={config.sidebar.buyer}>
-      <Container>
+    <Wrapper>
+      <Layout>
         <AnnualEmission km="42069" />
 
         <PieChart
@@ -151,7 +130,7 @@ export default () => {
             },
           ]}
         />
-      </Container>
-    </DashboardLayout>
+      </Layout>
+    </Wrapper>
   );
 };

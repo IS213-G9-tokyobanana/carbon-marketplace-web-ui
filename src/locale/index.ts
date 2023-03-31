@@ -1,7 +1,11 @@
+/**
+ * @prettier
+ */
 import landing from './landing';
 import buyer from './buyer';
 import projectList from './project-list';
 import verifier from './verifier';
+import seller from './seller';
 
 export default {
   brand: 'TokyoBanana',
@@ -31,6 +35,7 @@ export default {
     impactReport: 'Impact Report',
     myTasks: 'My Tasks',
     notifications: 'Notifications',
+    myProjects: 'My Projects',
     settings: 'Settings',
   },
 
@@ -38,4 +43,5 @@ export default {
   buyer,
   projectList,
   verifier,
+  seller,
 };

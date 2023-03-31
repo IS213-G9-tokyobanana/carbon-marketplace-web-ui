@@ -37,6 +37,7 @@ export const Wrapper = styled.div(
   ${applyStyleIf(
     $style === 'vertical',
     `
+    height: 100%;
     align-items: center;
     gap: 4px;
   `,
@@ -69,6 +70,10 @@ const Container = styled.div(
     `
     flex-direction: column;
     gap: 20px;
+
+    ${$PieLegend} {
+      height: 100%;
+    }
 
     &, ${$PieLegend}, ${$PieLegend__Label} {
       width: 100%;

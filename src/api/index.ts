@@ -227,6 +227,8 @@ function getVerifiableProjects(): API.VerifiableProject[] {
           currentCO2: 6,
           lastUpdated: '14 Mar 2023 18:01:01',
           status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
         },
         {
           id: '123-asd-123-as2',
@@ -235,6 +237,8 @@ function getVerifiableProjects(): API.VerifiableProject[] {
           currentCO2: 6,
           lastUpdated: '14 Mar 2023 18:01:01',
           status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
         },
         {
           id: '123-asd-123-as3',
@@ -243,6 +247,8 @@ function getVerifiableProjects(): API.VerifiableProject[] {
           currentCO2: 6,
           lastUpdated: '14 Mar 2023 18:01:01',
           status: 'inactive',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
         },
         {
           id: '123-asd-123-as4',
@@ -251,6 +257,8 @@ function getVerifiableProjects(): API.VerifiableProject[] {
           currentCO2: 6,
           lastUpdated: '14 Mar 2023 18:01:01',
           status: 'in-progress',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
         },
       ],
       status: 'pending',
@@ -267,6 +275,8 @@ function getVerifiableProjects(): API.VerifiableProject[] {
           currentCO2: 6,
           lastUpdated: '14 Mar 2023 18:01:01',
           status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
         },
         {
           id: '123-asd-123-as2',
@@ -275,6 +285,8 @@ function getVerifiableProjects(): API.VerifiableProject[] {
           currentCO2: 6,
           lastUpdated: '14 Mar 2023 18:01:01',
           status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
         },
         {
           id: '123-asd-123-as3',
@@ -283,6 +295,8 @@ function getVerifiableProjects(): API.VerifiableProject[] {
           currentCO2: 6,
           lastUpdated: '14 Mar 2023 18:01:01',
           status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
         },
         {
           id: '123-asd-123-as4',
@@ -291,9 +305,126 @@ function getVerifiableProjects(): API.VerifiableProject[] {
           currentCO2: 6,
           lastUpdated: '14 Mar 2023 18:01:01',
           status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
         },
       ],
       status: 'pending',
+    },
+  ];
+}
+
+function getSellerProjects(): API.SellerProject[] {
+  return [
+    {
+      id: '1234-1234-1234-abcd',
+      type: 'Community',
+      name: 'Sample Project',
+      description: `
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+      non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      `,
+      milestones: [
+        {
+          id: '123-asd-123-asd',
+          name: 'Some really long milestone name',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
+        },
+        {
+          id: '123-asd-123-as2',
+          name: 'Some really long milestone name',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
+        },
+        {
+          id: '123-asd-123-as3',
+          name: 'Milestone',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
+        },
+        {
+          id: '123-asd-123-as4',
+          name: 'Some milestone',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
+        },
+      ],
+    },
+    {
+      id: '1234-1234-1234-abc3',
+      type: 'Regional',
+      name: 'Another project',
+      description: `
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+      non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      `,
+      milestones: [
+        {
+          id: '123-asd-123-a1d',
+          name: 'Some really long milestone name',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
+        },
+        {
+          id: '123-asd-123-as2',
+          name: 'Some really long milestone name',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
+        },
+        {
+          id: '123-asd-123-as3',
+          name: 'Milestone',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
+        },
+        {
+          id: '123-asd-123-as4',
+          name: 'Some milestone',
+          expectedCO2: 10,
+          currentCO2: 6,
+          lastUpdated: '14 Mar 2023 18:01:01',
+          status: 'verified',
+          dueDate: '14 Mar 2023 18:01:01',
+          task: 'Samplet task',
+        },
+      ],
     },
   ];
 }
@@ -302,4 +433,5 @@ export default {
   getProjects,
   getQuestions,
   getVerifiableProjects,
+  getSellerProjects,
 };

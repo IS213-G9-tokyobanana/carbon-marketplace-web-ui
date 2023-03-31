@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { color } from 'config';
 import ImageIcon from './svg/ImageIcon';
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   position: absolute;
   height: 100%;
   width: 100%;

@@ -1,32 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config, { color } from 'config';
+import { color } from 'config';
 import locale from 'locale';
 
-import DashboardLayout from 'components/DashboardLayout';
+import Layout from 'components/pages/buyer/Layout';
 import MonthlyOffset, {
   Wrapper as $MonthlyOffset,
-} from 'components/pages/buyer/MonthlyOffset';
+} from 'components/pages/buyer/charts/MonthlyOffset';
 import SemiPieChart, {
   Wrapper as $SemiPieChart,
-} from 'components/pages/buyer/SemiPieChart';
-import PieChart from 'components/pages/buyer/PieChart';
-import BarChart, { Wrapper as $BarChart } from 'components/pages/buyer/BarChart';
+} from 'components/pages/buyer/charts/SemiPieChart';
+import PieChart from 'components/pages/buyer/charts/PieChart';
+import BarChart, { Wrapper as $BarChart } from 'components/pages/buyer/charts/BarChart';
 
-const Container = styled.div`
-  flex-grow: 1;
-
-  padding: 24px;
-  max-width: var(--page-max-width);
-  margin: 0 auto;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: min-content;
-  align-items: start;
-  gap: 16px;
-
+const Wrapper = styled.div`
   ${$MonthlyOffset}, ${$SemiPieChart} {
     height: 100%;
   }
@@ -34,21 +22,12 @@ const Container = styled.div`
   ${$BarChart} {
     grid-column: 1 / span 3;
   }
-
-  @media screen and (min-width: ${config.viewport.xl}) {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: calc(var(--page-max-width) - 2 * var(--page-padding-h));
-    padding: 24px 0;
-  }
 `;
 
 export default () => {
   return (
-    <DashboardLayout sidebarConfig={config.sidebar.buyer}>
-      <Container>
+    <Wrapper>
+      <Layout>
         <MonthlyOffset monthYear="Feb 2023" tonsOfCO2="2.1" miles="42,069" />
 
         <PieChart
@@ -115,7 +94,7 @@ export default () => {
             },
           ]}
         />
-      </Container>
-    </DashboardLayout>
+      </Layout>
+    </Wrapper>
   );
 };

@@ -10,11 +10,12 @@ export const Wrapper = styled.button(
       $textColor: string;
       $bgColor: string;
       $borderColor: string;
+      $borderStyle: string;
     } & IntrinsicHTML<'button'>,
   ) => `
   padding: 12px 20px;
   border-radius: 50px;
-  border: 1px solid ${props.$borderColor};
+  border: 1px ${props.$borderStyle} ${props.$borderColor};
   outline: none;
   cursor: ${props.onClick ? 'pointer' : 'auto'};
 
@@ -28,10 +29,17 @@ type ButtonStyle =
   | {
       classic: true;
       inverted?: never;
+      dashed?: never;
     }
   | {
       classic?: never;
       inverted: true;
+      dashed?: never;
+    }
+  | {
+      classic?: never;
+      inverted?: never;
+      dashed: true;
     };
 
 export default React.forwardRef(
@@ -46,25 +54,37 @@ export default React.forwardRef(
 
     ref: React.ForwardedRef<HTMLButtonElement>,
   ) => {
-    let textColor, bgColor, borderColor;
+    let textColor, bgColor, borderColor, borderStyle, className;
 
     if (props.classic) {
       textColor = 'white';
       bgColor = color.neutral10;
       borderColor = color.neutral10;
-    } else {
+      borderStyle = 'solid';
+      className = 'classic';
+    } else if (props.inverted) {
       textColor = color.neutral10;
       bgColor = 'transparent';
       borderColor = color.neutral10;
+      borderStyle = 'solid';
+      className = 'inverted';
+    } else {
+      textColor = color.neutral10;
+      bgColor = 'transparent';
+      borderColor = color.neutral8;
+      borderStyle = 'dashed';
+      className = 'dashed';
     }
 
     return (
       <Wrapper
         ref={ref}
+        className={className}
         {...props}
         $textColor={textColor}
         $bgColor={bgColor}
         $borderColor={borderColor}
+        $borderStyle={borderStyle}
       >
         {children}
       </Wrapper>

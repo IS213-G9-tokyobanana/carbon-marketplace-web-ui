@@ -10,8 +10,10 @@ export const Wrapper = styled.svg(
   width: auto;
   display: block;
 
-  transform-origin: center;
-  transform: rotate(${$deg}deg);
+  path {
+    transform-origin: center;
+    transform: rotate(${$deg}deg);
+  }
 `,
 );
 

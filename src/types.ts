@@ -60,6 +60,8 @@ export namespace API {
     currentCO2: number;
     lastUpdated: string;
     status: Status;
+    dueDate: string;
+    task: string;
   };
 
   export type VerifiableProject = {
@@ -68,5 +70,13 @@ export namespace API {
     type: string;
     milestones: Milestone[];
     status: Status;
+  };
+
+  export type SellerProject = {
+    id: string;
+    type: string;
+    name: string;
+    description: string;
+    milestones: Milestone[];
   };
 }

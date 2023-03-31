@@ -5,7 +5,7 @@ import locale from 'locale';
 import { API } from 'types';
 import { color } from 'config';
 
-import ProgressBar from './ProgressBar';
+import ProgressBar from 'components/common/ProgressBar';
 import StatusPill from './StatusPill';
 import Milestone from './Milestone';
 

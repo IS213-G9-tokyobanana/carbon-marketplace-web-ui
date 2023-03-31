@@ -6,7 +6,7 @@ import locale from 'locale';
 import { API } from 'types';
 import useAnimation from './useAnimation';
 
-import EditPencil from 'components/common/svg/EditPencil';
+import FilledPencil from 'components/common/svg/FilledPencil';
 import StatusPill from '../StatusPill';
 import EditStatusDropdown from './EditStatusDropdown';
 
@@ -123,7 +123,7 @@ export default ({
 
           {config.verifier.editableStatus.find((s) => s === props.status) && (
             <>
-              <EditPencil onClick={toggleEditStatus} />
+              <FilledPencil onClick={toggleEditStatus} />
 
               <EditStatusDropdown expand={editStatus} setExpand={setEditStatus} />
             </>
