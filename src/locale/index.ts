@@ -23,6 +23,12 @@ export default {
       cta: 'Get started',
       login: 'Login',
       dashboard: 'Dashboard',
+      menu: {
+        title: 'Login as:',
+        buyer: 'Buyer',
+        seller: 'Seller',
+        verifier: 'Verifier',
+      },
     },
   },
   carbonFootprint: {

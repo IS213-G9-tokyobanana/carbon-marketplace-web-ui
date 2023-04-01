@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IncomingMessage } from 'http';
 
 import { color } from 'config';
 import locale from 'locale';
+import { withSessionSsr } from 'utils';
+import useUserSetter from 'hooks/useUserSetter';
 
 import Layout from 'components/pages/buyer/Layout';
 import AnnualEmission, {
@@ -33,6 +36,8 @@ const Wrapper = styled.div`
 `;
 
 export default () => {
+  useUserSetter('buyer');
+
   return (
     <Wrapper>
       <Layout>
@@ -134,3 +139,19 @@ export default () => {
     </Wrapper>
   );
 };
+
+export const getServerSideProps = withSessionSsr(
+  async ({ req }: { req: IncomingMessage }) => {
+    const user = req.session.user;
+
+    if (!user || user !== 'buyer') {
+      return {
+        notFound: true,
+      };
+    }
+
+    return {
+      props: {},
+    };
+  },
+);

@@ -22,6 +22,11 @@ export const Wrapper = styled.button(
   background: ${props.$bgColor};
   color: ${props.$textColor};
   font-size: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 `,
 );
 
@@ -51,7 +56,6 @@ export default React.forwardRef(
       children: string | JSX.Element | Array<string | JSX.Element | boolean>;
     } & ButtonStyle &
       IntrinsicHTML<'button'>,
-
     ref: React.ForwardedRef<HTMLButtonElement>,
   ) => {
     let textColor, bgColor, borderColor, borderStyle, className;

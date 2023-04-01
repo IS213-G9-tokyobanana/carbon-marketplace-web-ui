@@ -23,7 +23,7 @@ export const Wrapper = styled.div(
   ({ $style }: { $style: Style }) => `
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   gap: 16px;
 
   background: white;
@@ -48,6 +48,7 @@ export const Wrapper = styled.div(
 const Container = styled.div(
   ({ $style }: { $style: Style }) => `
   position: relative;
+
   display: flex;
   align-items: center;
   justify-content: space-between;

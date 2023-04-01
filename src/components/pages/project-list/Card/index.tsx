@@ -58,13 +58,6 @@ const FlexRow = styled.div`
   justify-content: space-between;
   gap: 10px;
   flex-wrap: wrap;
-
-  p {
-    color: ${color.neutral10};
-    display: flex;
-    align-items: start;
-    gap: 10px;
-  }
 `;
 
 const StarGroup = styled.div`
@@ -105,11 +98,11 @@ export default (props: API.Project) => (
 
     <FlexRow>
       <p className="body-small">
-        <span>
-          {props.tco2e} {locale.tco2e.denominator}
-        </span>
+        {props.tco2e} {locale.tco2e.denominator}
+        &nbsp;
         <span dangerouslySetInnerHTML={{ __html: locale.tco2e.token }} />
       </p>
+
       <Button inverted>{locale.projectList.card.button.purchase}</Button>
     </FlexRow>
   </Wrapper>

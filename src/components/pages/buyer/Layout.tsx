@@ -29,7 +29,7 @@ const Dashboard = styled.div`
   flex-grow: 1;
 
   padding: 24px;
-  max-width: var(--page-max-width);
+  max-width: var(--dashboard-max-width);
   margin: 0 auto;
 
   display: grid;
@@ -37,15 +37,6 @@ const Dashboard = styled.div`
   grid-auto-rows: min-content;
   align-items: start;
   gap: 16px;
-
-  @media screen and (min-width: ${config.viewport.xl}) {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: calc(var(--page-max-width) - 2 * var(--page-padding-h));
-    padding: 24px 0;
-  }
 `;
 
 export default ({ children }: { children: JSX.Element | JSX.Element[] }) => (

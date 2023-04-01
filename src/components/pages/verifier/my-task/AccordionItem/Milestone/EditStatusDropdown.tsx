@@ -2,14 +2,26 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import config from 'config';
-import Menu from 'components/common/Dropdown/components/Menu';
+import Menu, { Wrapper as $Menu } from 'components/common/Dropdown/components/Menu';
 import StatusPill from '../StatusPill';
+
+const Wrapper = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  ${$Menu} {
+    min-width: unset;
+  }
+`;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
+
+  padding: 0 8px;
 `;
 
 export default ({
@@ -31,18 +43,20 @@ export default ({
   }, []);
 
   return (
-    <Menu
-      expand={expand}
-      setExpand={setExpand}
-      onClick={(e) => {
-        e.stopPropagation();
-      }}
-    >
-      <Container>
-        {config.verifier.editStatusOptions.map((m) => (
-          <StatusPill key={m}>{m}</StatusPill>
-        ))}
-      </Container>
-    </Menu>
+    <Wrapper>
+      <Menu
+        expand={expand}
+        setExpand={setExpand}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
+      >
+        <Container>
+          {config.verifier.editStatusOptions.map((m) => (
+            <StatusPill key={m}>{m}</StatusPill>
+          ))}
+        </Container>
+      </Menu>
+    </Wrapper>
   );
 };

@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { IncomingMessage } from 'http';
 
 import { API } from 'types';
 import api from 'api';
 import config, { color } from 'config';
 import locale from 'locale';
+import { withSessionSsr } from 'utils';
+import useUserSetter from 'hooks/useUserSetter';
 
 import Sidebar from 'components/Sidebar';
 import Button, { Wrapper as $Button } from 'components/common/Button';
@@ -27,21 +30,12 @@ const Wrapper = styled.div`
 const Dashboard = styled.div`
   flex-grow: 1;
   padding: 24px;
-  max-width: var(--page-max-width);
+  max-width: var(--dashboard-max-width);
   margin: 0 auto;
 
   display: flex;
   flex-direction: column;
   gap: 20px;
-
-  @media screen and (min-width: 2400px) {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-
-    width: calc(var(--page-max-width) - 2 * var(--page-padding-h));
-    padding: 24px 0;
-  }
 `;
 
 const CardGroup = styled.div`
@@ -55,6 +49,8 @@ const CardGroup = styled.div`
 `;
 
 export default ({ projects }: { projects: API.SellerProject[] }) => {
+  useUserSetter('seller');
+
   const addButton = useRef<HTMLButtonElement>(null);
   const card = useRef<HTMLDivElement>(null);
 
@@ -126,12 +122,20 @@ export default ({ projects }: { projects: API.SellerProject[] }) => {
   );
 };
 
-export async function getServerSideProps() {
-  const projects = api.getSellerProjects();
+export const getServerSideProps = withSessionSsr(
+  async ({ req }: { req: IncomingMessage }) => {
+    const user = req.session.user;
 
-  return {
-    props: {
-      projects,
-    },
-  };
-}
+    if (!user || user !== 'seller') {
+      return {
+        notFound: true,
+      };
+    }
+
+    const projects = api.getSellerProjects();
+
+    return {
+      props: { projects },
+    };
+  },
+);

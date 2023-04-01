@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import 'globals.css';
 import fonts from 'fonts';
 
-import Header from '../components/Header';
+import Header from 'components/Header';
 
 const App = styled.main`
   --header-height: 70px;

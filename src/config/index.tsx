@@ -4,8 +4,9 @@
 import locale from 'locale';
 import landing from './landing';
 import verifier from './verifier';
+import header from './header';
 
-import { NavItem, SidebarConfig, Viewport } from 'types';
+import { SidebarConfig, Viewport } from 'types';
 
 import PieChart from 'components/common/svg/PieChart';
 import Document from 'components/common/svg/Document';
@@ -32,20 +33,14 @@ const viewport: Viewport = {
   xl: '1900px',
 };
 
-const navs: NavItem[] = [
-  {
-    title: locale.header.navs.approach,
-    url: 'https://google.com',
+const ironOptions = {
+  cookieName: 'user_session',
+  password: 'yPo4T7apfbdvctV1Bso1oAndQH9qwC94',
+  // secure: true should be used in production (HTTPS) but can't be used in development (HTTP)
+  cookieOptions: {
+    secure: process.env.NODE_ENV === 'production' ? true : false,
   },
-  {
-    title: locale.header.navs.projects,
-    url: '/project-list',
-  },
-  {
-    title: locale.header.navs.workWithUs,
-    url: 'https://google.com',
-  },
-];
+};
 
 const sidebar: {
   buyer: SidebarConfig;
@@ -72,7 +67,6 @@ const sidebar: {
       },
     ],
   ],
-
   verifier: [
     [
       {
@@ -92,7 +86,6 @@ const sidebar: {
       },
     ],
   ],
-
   seller: [
     [
       {
@@ -117,8 +110,9 @@ const sidebar: {
 export default {
   color,
   viewport,
-  navs,
+  ironOptions,
 
+  header,
   sidebar,
   landing,
   verifier,

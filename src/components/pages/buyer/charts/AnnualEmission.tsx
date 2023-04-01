@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import locale from 'locale';
 import { color } from 'config';
-import Image from 'components/common/Image';
+import Image, { Mask as $Image__Mask } from 'components/common/Image';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -26,10 +26,15 @@ export const Wrapper = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  flex-grow: 1;
+
   position: relative;
   aspect-ratio: 1/1;
-  height: 70px;
   width: auto;
+
+  ${$Image__Mask} {
+    background: transparent;
+  }
 `;
 
 export default ({ km }: { km: string }) => {
@@ -44,7 +49,9 @@ export default ({ km }: { km: string }) => {
       </ImageContainer>
 
       <p className="body-small">
-        <span>{_km}</span> {locale.buyer.annualEmission[2]}
+        <span>{_km}</span>
+        &nbsp;
+        {locale.buyer.annualEmission[2]}
       </p>
     </Wrapper>
   );

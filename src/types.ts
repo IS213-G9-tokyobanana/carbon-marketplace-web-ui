@@ -1,3 +1,8 @@
+import { NextRouter } from 'next/router';
+
+/**
+ * @prettier
+ */
 export type Viewport = {
   xs?: undefined;
   sm: string;
@@ -9,6 +14,12 @@ export type Viewport = {
 export type NavItem = {
   title: string;
   url: string;
+};
+
+export type LoginMenuItem = {
+  title: string;
+  user: API.User;
+  redirect: string;
 };
 
 export type CleanerStepItem = {
@@ -32,6 +43,8 @@ export type IntrinsicHTML<T extends keyof JSX.IntrinsicElements> = Omit<
  * API
  */
 export namespace API {
+  export type User = 'buyer' | 'seller' | 'verifier';
+
   export type Project = {
     id: number;
     category: string;

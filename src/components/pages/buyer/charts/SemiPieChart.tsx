@@ -17,7 +17,7 @@ type Item = {
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   gap: 10px;
 
   background: white;
@@ -29,9 +29,9 @@ export const Wrapper = styled.div`
   }
 
   ${$PieLegend} {
-    margin-top: 50px;
     flex-grow: 1;
     justify-content: end;
+    width: 100%;
   }
 
   ${$PieLegend__Label} {
