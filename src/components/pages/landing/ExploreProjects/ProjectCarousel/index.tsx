@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { API } from 'types';
+import { API2 } from 'types';
 
 import CategoryTab from './CategoryTab';
 import Card from './Card';
@@ -20,7 +20,7 @@ const CardGroup = styled.div`
   row-gap: 30px;
 `;
 
-export default ({ data }: { data: API.Project[] }) => {
+export default ({ data }: { data: API2.Project[] }) => {
   const [category, setCategory] = useState<string>();
   const [categories, setCategories] = useState<string[]>([]);
 

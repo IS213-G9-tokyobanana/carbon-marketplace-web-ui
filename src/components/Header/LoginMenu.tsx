@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import config, { color } from 'config';
 import locale from 'locale';
 import { API } from 'types';
-import { applyStyleIf } from 'utils';
 import useCollapse from 'components/common/Dropdown/useCollapse';
 import useUserStore from 'stores/useUserStore';
 
@@ -45,10 +44,7 @@ export default ({
   expand: boolean;
   setExpand: (b: boolean) => void;
 }) => {
-  const user = useUserStore((state) => state.user);
   const router = useRouter();
-
-  useCollapse(setExpand);
 
   const login = async (_user: API.User, redirect: string) => {
     const response = await fetch('/api/sessions', {

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 import locale from 'locale';
 import useUserStore from 'stores/useUserStore';
+import useCollapse from 'components/common/Dropdown/useCollapse';
 
 export default () => {
   const user = useUserStore((state) => state.user);
@@ -12,6 +13,8 @@ export default () => {
   const [title, setTitle] = useState('');
   const [renderAvatar, setRenderAvatar] = useState(false);
   const [expandMenu, setExpandMenu] = useState(false);
+
+  const onSelectClick = useCollapse(expandMenu, setExpandMenu);
 
   useEffect(() => {
     setRenderAvatar(!!user);
@@ -53,8 +56,7 @@ export default () => {
         router.push('/onboard');
         break;
       default:
-        e.stopPropagation();
-        setExpandMenu(!expandMenu);
+        onSelectClick();
     }
   };
 

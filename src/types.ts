@@ -42,6 +42,38 @@ export type IntrinsicHTML<T extends keyof JSX.IntrinsicElements> = Omit<
 /**
  * API
  */
+export namespace API2 {
+  export type Status = 'pending';
+
+  export type Milestone = {
+    id: string;
+    created_at: string;
+    description: string;
+    due_date: string;
+    name: string;
+    offsets_available: number;
+    offsets_total: number;
+    project_id: string;
+    status: Status;
+    type: string;
+    updated_at: string;
+  };
+
+  export type Project = {
+    created_at: string;
+    description: string;
+    id: string;
+    milestones: Milestone[];
+    name: string;
+    owner_id: string;
+    rating: number;
+    status: Status;
+    types: string[];
+    updated_at: string;
+    category: string;
+  };
+}
+
 export namespace API {
   export type User = 'buyer' | 'seller' | 'verifier';
 

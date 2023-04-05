@@ -6,7 +6,7 @@ export default {
   ],
   monthlyOffset: [
     'In month of {{ 1 }}, you have successfully offset',
-    'tons of CO<sub>2</sub>',
+    'tons of CO₂',
     'That is equivalent to {{ 1 }} driven in an average car!',
   ],
 
@@ -15,7 +15,7 @@ export default {
       title: 'Top Emissions by Type',
     },
     barChart: {
-      title: 'Your carbon footprint (tons of CO<sub>2</sub>) vs. the world',
+      title: 'Your carbon footprint (tons of CO₂) vs. the world',
     },
     twinBarChart: {
       title:
@@ -32,7 +32,7 @@ export default {
     },
     barChart: {
       title:
-        'Your offset progress this month (tons of CO<sub>2</sub>) vs. others of similar footprint',
+        'Your offset progress this month (tons of CO₂) vs. others of similar footprint',
     },
   },
 };

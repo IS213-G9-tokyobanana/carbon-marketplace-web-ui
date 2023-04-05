@@ -56,7 +56,7 @@ export default ({ projects }: { projects: API.SellerProject[] }) => {
 
   const [addProject, setAddProject] = useState(false);
 
-  const [previewProject, setPreviewProject] = useState<API.SellerProject>(
+  const [selectedProject, setSelectedProject] = useState<API.SellerProject>(
     projects[0] ?? undefined,
   );
   const [search, setSearch] = useState('');
@@ -102,7 +102,8 @@ export default ({ projects }: { projects: API.SellerProject[] }) => {
                 <ProjectCard
                   ref={card}
                   key={p.id}
-                  onClick={() => setPreviewProject(p)}
+                  onClick={() => setSelectedProject(p)}
+                  active={selectedProject.id === p.id}
                   {...p}
                 />
               ))}
@@ -117,7 +118,7 @@ export default ({ projects }: { projects: API.SellerProject[] }) => {
         {addProject && <CreateForm onCancel={() => setAddProject(false)} />}
       </Dashboard>
 
-      {!addProject && <PreviewEditForm {...previewProject} />}
+      {!addProject && <PreviewEditForm {...selectedProject} />}
     </Wrapper>
   );
 };

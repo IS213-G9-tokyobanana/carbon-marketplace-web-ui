@@ -5,6 +5,7 @@ import locale from 'locale';
 import landing from './landing';
 import verifier from './verifier';
 import header from './header';
+import api from './api';
 
 import { SidebarConfig, Viewport } from 'types';
 
@@ -112,6 +113,7 @@ export default {
   viewport,
   ironOptions,
 
+  api,
   header,
   sidebar,
   landing,

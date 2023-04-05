@@ -1,5 +1,7 @@
 import { API } from 'types';
 
+import project from './project';
+
 function getProjects(): API.Project[] {
   return [
     {
@@ -434,4 +436,6 @@ export default {
   getQuestions,
   getVerifiableProjects,
   getSellerProjects,
+
+  project,
 };

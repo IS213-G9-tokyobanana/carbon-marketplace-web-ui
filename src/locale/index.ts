@@ -10,7 +10,7 @@ import seller from './seller';
 export default {
   brand: 'TokyoBanana',
   tco2e: {
-    token: 'tCO<sub>2</sub>e',
+    token: 'tCO₂e',
     denominator: '/ 10',
   },
   header: {
@@ -32,7 +32,7 @@ export default {
     },
   },
   carbonFootprint: {
-    carbonIndex: `Your carbon footprint {{ 1 }} tons of CO<sub>2</sub> per year`,
+    carbonIndex: `Your carbon footprint {{ 1 }} tons of CO₂ per year`,
     comparison: `That's {{ 1 }} less than the Singapore average.`,
     source: 'source',
   },
@@ -43,6 +43,14 @@ export default {
     notifications: 'Notifications',
     myProjects: 'My Projects',
     settings: 'Settings',
+  },
+  purchaseDropdown: {
+    button: {
+      purchase: 'Purchase',
+      max: 'Max',
+      buy: 'Buy',
+    },
+    placeholder: 'Amount',
   },
 
   landing,

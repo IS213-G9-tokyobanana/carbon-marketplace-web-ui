@@ -1,14 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-export default (setExpand: (b: boolean) => void) => {
+export default (expand: boolean, setExpand: (b: boolean) => void) => {
+  const expandIntent = useRef(false);
+
   useEffect(() => {
     const collapse = () => {
-      setExpand(false);
+      if (expandIntent.current) {
+        expandIntent.current = false;
+      } else {
+        setExpand(false);
+      }
     };
 
     window.addEventListener('click', collapse);
+
     return () => {
       window.removeEventListener('click', collapse);
     };
   }, []);
+
+  const onSelectClick = () => {
+    expandIntent.current = true;
+    setExpand(!expand);
+  };
+
+  return onSelectClick;
 };

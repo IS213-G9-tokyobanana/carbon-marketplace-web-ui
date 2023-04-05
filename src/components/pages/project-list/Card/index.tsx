@@ -3,12 +3,13 @@ import styled from 'styled-components';
 
 import { color } from 'config';
 import { API } from 'types';
+import locale from 'locale';
+
 import Heart from 'components/common/svg/Heart';
 import Image from 'components/common/Image';
-import TypeTag from './TypeTag';
 import Star from 'components/common/svg/Star';
-import Button from 'components/common/Button';
-import locale from 'locale';
+import Dropdown from 'components/common/Dropdown';
+import TypeBadge from './TypeBadge';
 
 const Wrapper = styled.div`
   background: white;
@@ -19,6 +20,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  transition: 0.25s;
+
+  &:hover {
+    box-shadow: 2px 2px 12px 1px #0001;
+  }
 
   p {
     color: ${color.neutral10};
@@ -85,7 +92,7 @@ export default (props: API.Project) => (
     </ImageContainer>
 
     <FlexRow>
-      <TypeTag>{props.category}</TypeTag>
+      <TypeBadge>{props.category}</TypeBadge>
 
       <StarGroup>
         {Array.from(Array(5).keys()).map((_, i) => (
@@ -103,7 +110,7 @@ export default (props: API.Project) => (
         <span dangerouslySetInnerHTML={{ __html: locale.tco2e.token }} />
       </p>
 
-      <Button inverted>{locale.projectList.card.button.purchase}</Button>
+      <Dropdown.Purchase />
     </FlexRow>
   </Wrapper>
 );

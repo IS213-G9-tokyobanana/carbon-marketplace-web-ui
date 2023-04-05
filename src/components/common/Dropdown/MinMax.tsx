@@ -95,7 +95,7 @@ export default ({
 
   const [expand, setExpand] = useState(false);
 
-  useCollapse(setExpand);
+  const onSelectClick = useCollapse(expand, setExpand);
 
   useEffect(() => {
     if (expand) return;
@@ -105,11 +105,6 @@ export default ({
   /**
    * Not hook
    */
-  const handleSelectClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-    setExpand(!expand);
-  };
-
   const handleMinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.value) {
       setMin(undefined);
@@ -143,7 +138,7 @@ export default ({
    */
   return (
     <Wrapper>
-      <Select onClick={handleSelectClick} expand={expand}>
+      <Select onClick={onSelectClick} expand={expand}>
         <Placeholder dangerouslySetInnerHTML={{ __html: placeholderText }} />
       </Select>
 

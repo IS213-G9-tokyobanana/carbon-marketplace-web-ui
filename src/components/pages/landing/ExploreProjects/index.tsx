@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import locale from 'locale';
 import { color } from 'config';
-import { API } from 'types';
+import { API2 } from 'types';
 
 import Button from 'components/common/Button';
 import ProjectCarousel from './ProjectCarousel';
@@ -50,7 +50,7 @@ const Footer = styled.div`
   }
 `;
 
-export default ({ projects }: { projects: API.Project[] }) => (
+export default ({ projects }: { projects: API2.Project[] }) => (
   <Wrapper id="explore-project">
     <TextContainer>
       <h2 className="title-large">{locale.landing.exploreProjects.title}</h2>

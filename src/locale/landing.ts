@@ -51,7 +51,6 @@ const exploreProjects = {
   `,
   button: {
     showMore: 'Show more',
-    purchase: 'Purchase',
   },
   projectAmtSuffix: 'Projects',
 };

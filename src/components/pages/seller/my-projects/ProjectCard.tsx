@@ -4,19 +4,37 @@ import styled from 'styled-components';
 import { color } from 'config';
 import { API } from 'types';
 import locale from 'locale';
+import { applyStyleIf } from 'utils';
 
 import Image, { Wrapper as $Image } from 'components/common/Image';
 import ProgressBar from 'components/common/ProgressBar';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div(
+  ({ $active }: { $active: boolean }) => `
   display: flex;
   gap: 20px;
 
   padding: 24px 32px;
   background: white;
   border-radius: 15px;
+  border: 2px solid transparent;
   cursor: pointer;
-`;
+
+  transition: 0.25s;
+
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 2px 2px 12px 1px #0001;
+  }
+
+  ${applyStyleIf(
+    $active,
+    `
+    border-color: ${color.neutral10};
+  `,
+  )}
+`,
+);
 
 const ImageContainer = styled.div`
   flex-shrink: 0;
@@ -81,14 +99,16 @@ export default React.forwardRef(
   (
     {
       onClick,
+      active = false,
       ...props
     }: {
       onClick: () => void;
+      active?: boolean;
     } & API.SellerProject,
     ref: React.ForwardedRef<HTMLDivElement>,
   ) => {
     return (
-      <Wrapper ref={ref} onClick={onClick}>
+      <Wrapper ref={ref} onClick={onClick} $active={active}>
         <ImageContainer>
           <Image />
         </ImageContainer>

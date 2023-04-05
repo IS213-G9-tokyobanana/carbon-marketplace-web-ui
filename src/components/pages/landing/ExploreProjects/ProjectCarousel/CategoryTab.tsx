@@ -19,6 +19,7 @@ const Option = styled.div(
 
   position: relative;
   text-align: center;
+  text-transform: capitalize;
   padding: 18px 0;
   cursor: pointer;
 

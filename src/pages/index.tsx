@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import api from 'api';
-import { API } from 'types';
+import { API2 } from 'types';
 
 import MainHeadline from 'components/pages/landing/MainHeadline';
 import CleanerTomorrow from 'components/pages/landing/CleanerTomorrow';
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-export default ({ projects }: { projects: API.Project[] }) => {
+export default ({ projects }: { projects: API2.Project[] }) => {
   return (
     <Wrapper>
       <MainHeadline />
@@ -31,11 +31,11 @@ export default ({ projects }: { projects: API.Project[] }) => {
 };
 
 export async function getServerSideProps() {
-  const projects = api.getProjects();
+  const projects = api.project.getAll();
 
   return {
     props: {
-      projects,
+      projects: projects.data,
     },
   };
 }

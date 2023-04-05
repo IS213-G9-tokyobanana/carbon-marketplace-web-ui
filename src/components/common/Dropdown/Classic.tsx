@@ -49,33 +49,19 @@ export default <T extends Object, K extends keyof T>(props: {
   activeId: T[K];
   onChange?: (selectedId: T[K]) => void;
 }) => {
-  /**
-   * Hooks
-   */
   const [expand, setExpand] = useState(false);
 
-  useCollapse(setExpand);
+  const onSelectClick = useCollapse(expand, setExpand);
 
-  /**
-   * Not hook
-   */
   const activeOption = props.options.find((o) => o[props.idKey] === props.activeId);
-
-  const handleSelectClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.stopPropagation();
-    setExpand(!expand);
-  };
 
   const handleOptionClick = (id: T[K]) => {
     props.onChange && props.onChange(id);
   };
 
-  /**
-   * Render
-   */
   return (
     <Wrapper>
-      <Select onClick={handleSelectClick} expand={expand}>
+      <Select onClick={onSelectClick} expand={expand}>
         <p>{activeOption ? (activeOption[props.nameKey] as string) : ''}</p>
       </Select>
 

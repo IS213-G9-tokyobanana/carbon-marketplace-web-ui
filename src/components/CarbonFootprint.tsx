@@ -59,10 +59,7 @@ export default () => {
 
       <p className="title-large">{10.4}</p>
 
-      <p
-        className="body-small"
-        dangerouslySetInnerHTML={{ __html: carbonIndexSubstr[1] }}
-      />
+      <p className="body-small">{carbonIndexSubstr[1]}</p>
 
       <Comparison>
         <p>{comparison}</p>

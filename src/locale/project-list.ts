@@ -6,16 +6,11 @@ export default {
   controller: {
     searchPlaceholder: 'Search',
     minMax: {
-      placeholder: 'Available tCO<sub>2</sub>e',
+      placeholder: 'Available tCO₂e',
       button: {
         clear: 'Clear',
         apply: 'Apply',
       },
-    },
-  },
-  card: {
-    button: {
-      purchase: 'Purchase',
     },
   },
 };
