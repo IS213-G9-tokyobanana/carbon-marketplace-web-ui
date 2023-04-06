@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import api from 'api';
-import { API } from 'types';
+import { API2 } from 'types';
 import { color } from 'config';
 import { ProjectCategory } from 'components/pages/project-list/types';
 
 import Hero from 'components/pages/project-list/Hero';
 import Card from 'components/pages/project-list/Card';
 import Controller from 'components/pages/project-list/Controller';
+import { MeiliSearch } from 'meilisearch';
 
 const categoryAll: ProjectCategory = {
   id: -1,
@@ -32,7 +32,7 @@ const CardGroup = styled.div`
   gap: 24px;
 `;
 
-export default ({ projects }: { projects: API.Project[] }) => {
+export default ({ projects }: { projects: API2.Project[] }) => {
   /**
    * Hooks
    */
@@ -67,7 +67,7 @@ export default ({ projects }: { projects: API.Project[] }) => {
    * Not hook
    */
   const filteredProjects = projects.filter((p) => {
-    const matchSearch = !!p.title.match(new RegExp(search, 'i'));
+    const matchSearch = !!p.name.match(new RegExp(search, 'i'));
     let matchCategory = true;
     let matchCO2 = true;
 
@@ -76,11 +76,11 @@ export default ({ projects }: { projects: API.Project[] }) => {
         p.category === projectCategories.find((c) => c.id === activeCategoryId)?.name;
     }
 
-    if (minCO2 && p.tco2e < minCO2) {
+    if (minCO2 && p.offsets_available! < minCO2) {
       matchCO2 = false;
     }
 
-    if (maxCO2 && p.tco2e > maxCO2) {
+    if (maxCO2 && p.offsets_available! > maxCO2) {
       matchCO2 = false;
     }
 
@@ -122,7 +122,30 @@ export default ({ projects }: { projects: API.Project[] }) => {
 };
 
 export async function getServerSideProps() {
-  const projects = api.getProjects();
+  const client = new MeiliSearch({
+    host: `${process.env.MEILI_URL}`,
+    apiKey: 'MASTER_KEY',
+  });
+
+  const meiliProjectsDocs = await client.index('projects').getDocuments({ limit: 20 });
+  const projects = meiliProjectsDocs.results as API2.Project[];
+  projects.forEach((project: API2.Project) => {
+    const totalOffsetsAvailable = project.milestones.reduce(
+      (acc: number, milestone: API2.Milestone) => {
+        return acc + milestone.offsets_available;
+      },
+      0,
+    );
+
+    const totalOffsetsTotal = project.milestones.reduce((acc, milestone) => {
+      return acc + milestone.offsets_total;
+    }, 0);
+
+    project.offsets_available = totalOffsetsAvailable;
+    project.offsets_total = totalOffsetsTotal;
+  });
+
+  console.log(projects);
 
   return {
     props: {

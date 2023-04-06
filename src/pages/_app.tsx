@@ -1,11 +1,13 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import styled from 'styled-components';
+import 'react-widgets/styles.css';
 
 import 'globals.css';
 import fonts from 'fonts';
 
 import Header from 'components/Header';
+import { color } from 'config';
 
 const App = styled.main`
   --header-height: 70px;
@@ -13,6 +15,11 @@ const App = styled.main`
 
   * {
     font-family: ${fonts.dmSans.style.fontFamily};
+  }
+
+  .rw-cell.rw-state-selected {
+    background: ${color.neutral10};
+    border-color: ${color.neutral10};
   }
 `;
 

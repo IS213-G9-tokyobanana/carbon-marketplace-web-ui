@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import { color } from 'config';
-import { Milestone } from './types';
+import { FormSchema } from './types';
+import { API2 } from 'types';
 import locale from 'locale';
+import api from 'api';
+import useForm from 'hooks/common/useForm';
 
 import ProjectDetail from './ProjectDetail';
 import Milestones from './Milestones';
@@ -38,30 +41,82 @@ const ButtonGroup = styled.div`
   }
 `;
 
-export default ({ onCancel }: { onCancel: () => void }) => {
-  const [milestones, setMilestones] = useState<Milestone[]>([
-    {
-      name: '',
-      amt: '',
-      date: '',
-    },
-  ]);
+export default ({
+  onCancel,
+  onSubmit,
+}: {
+  onCancel: () => void;
+  onSubmit: () => void;
+}) => {
+  const [form, setForm] = useForm<FormSchema>({
+    title: '',
+    type: '',
+    description: '',
+    milestones: [
+      {
+        name: '',
+        amt: '',
+        date: null,
+      },
+    ],
+  });
 
   const submitForm = () => {
-    console.log(milestones);
+    const dateNow = new Date();
+    const projectId = crypto.randomUUID();
+
+    const project: API2.Project = {
+      created_at: dateNow.toISOString(),
+      description: form.description,
+      id: projectId,
+      milestones: form.milestones.map((m) => ({
+        created_at: dateNow.toISOString(),
+        description: m.name,
+        due_date: !!m.date ? dateNow.toISOString() : m.date!.toISOString(),
+        id: crypto.randomUUID(),
+        name: m.name,
+        offsets_available: 50,
+        offsets_total: 50,
+        project_id: projectId,
+        status: 'pending',
+        type: 'Temporal',
+        updated_at: dateNow.toISOString(),
+      })),
+      name: form.title,
+      owner_id: crypto.randomUUID(),
+      rating: 100,
+      status: 'pending',
+      types: [form.type],
+      updated_at: dateNow.toISOString(),
+      category: 'community',
+    };
+
+    api.project.createOne(project);
+    onSubmit();
   };
 
   return (
     <Wrapper>
-      <ProjectDetail />
+      <ProjectDetail
+        title={form.title}
+        onTitleChange={(s) => setForm({ title: s })}
+        type={form.type}
+        onTypeChange={(s) => setForm({ type: s })}
+      />
 
       <BorderLine />
 
-      <Milestones milestones={milestones} onMilestonesChange={setMilestones} />
+      <Milestones
+        milestones={form.milestones}
+        onMilestonesChange={(m) => setForm({ milestones: m })}
+      />
 
       <BorderLine />
 
-      <Description />
+      <Description
+        value={form.description}
+        onChange={(s) => setForm({ description: s })}
+      />
 
       <BorderLine />
 

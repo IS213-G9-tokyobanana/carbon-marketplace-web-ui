@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import config from 'config';
+import { API2 } from 'types';
 import Menu, { Wrapper as $Menu } from 'components/common/Dropdown/components/Menu';
-import StatusPill from '../StatusPill';
+import StatusBadge, { Wrapper as $StatusBadge } from '../StatusBadge';
 
 const Wrapper = styled.div`
   position: absolute;
@@ -12,6 +12,7 @@ const Wrapper = styled.div`
 
   ${$Menu} {
     min-width: unset;
+    cursor: auto;
   }
 `;
 
@@ -22,28 +23,25 @@ const Container = styled.div`
   align-items: center;
 
   padding: 0 8px;
+
+  ${$StatusBadge} {
+    cursor: pointer;
+  }
 `;
 
 export default ({
   expand,
   setExpand,
+  options,
+  onOptionClick,
 }: {
   expand: boolean;
   setExpand: (b: boolean) => void;
+  options: API2.Status[];
+  onOptionClick: (o: API2.Status) => void;
 }) => {
-  useEffect(() => {
-    const collapse = () => {
-      setExpand(false);
-    };
-
-    window.addEventListener('click', collapse);
-    return () => {
-      window.removeEventListener('click', collapse);
-    };
-  }, []);
-
   return (
-    <Wrapper>
+    <Wrapper onClick={(e) => e.stopPropagation()}>
       <Menu
         expand={expand}
         setExpand={setExpand}
@@ -52,8 +50,10 @@ export default ({
         }}
       >
         <Container>
-          {config.verifier.editStatusOptions.map((m) => (
-            <StatusPill key={m}>{m}</StatusPill>
+          {options.map((m) => (
+            <StatusBadge key={m} onClick={() => onOptionClick(m)}>
+              {m}
+            </StatusBadge>
           ))}
         </Container>
       </Menu>

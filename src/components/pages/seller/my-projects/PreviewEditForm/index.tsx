@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { format } from 'date-fns';
 
 import { color } from 'config';
 import locale from 'locale';
-import { API } from 'types';
+import { API2 } from 'types';
 import { applyStyleIf } from 'utils';
+import api from 'api';
+import { FormSchema, Milestone } from './types';
+import useForm from 'hooks/common/useForm';
 
 import Button, { Wrapper as $Button } from 'components/common/Button';
 import Image from 'components/common/Image';
@@ -12,10 +16,11 @@ import Textarea, { Wrapper as $Textarea } from 'components/common/Textarea';
 import OutlinedPencil, {
   Wrapper as $OutlinedPencil,
 } from 'components/common/svg/OutlinedPencil';
-import EditInput, { Wrapper as $EditInput } from './EditInput';
+import EditInput from './EditInput';
 import FormItem from './FormItem';
 
 export const Wrapper = styled.div`
+  flex-shrink: 0;
   padding: 32px 24px;
   width: 586px;
 
@@ -68,7 +73,7 @@ const MilestoneGroup = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
 
-  ${$EditInput} {
+  & > div:nth-of-type(-n + 3) {
     margin-top: 16px;
   }
 `;
@@ -108,37 +113,106 @@ const ButtonGroup = styled.div`
   }
 `;
 
-type Milestone = {
-  name: string;
-  amount: string;
-  dueDate: string;
-};
-
-export default (props: API.SellerProject) => {
+export default ({ data }: { data?: API2.Project }) => {
   const [editMilestones, setEditMilestones] = useState(false);
   const [editDesc, setEditDesc] = useState(false);
 
-  const [description, setDescription] = useState(props.description);
-  const [newMilestone, setNewMilestone] = useState<Milestone>({
-    name: '',
-    amount: '',
-    dueDate: '',
+  const [form, setForm] = useForm<FormSchema>({
+    description: data ? data.description : '',
+    milestones: [],
   });
 
-  const handleNewMilestoneChange = <T extends keyof Milestone>(
+  useEffect(() => {
+    if (!data) return;
+
+    setEditMilestones(false);
+    setEditDesc(false);
+
+    setForm({
+      description: data.description,
+      milestones: [],
+    });
+  }, [data]);
+
+  const resetForm = () => {
+    setForm({
+      description: data ? data.description : '',
+      milestones: [],
+    });
+  };
+
+  const handleEditMilestoneClick = () => {
+    if (editMilestones) {
+      setEditMilestones(false);
+    } else {
+      setForm({
+        milestones: [
+          {
+            name: '',
+            amount: '',
+            dueDate: null,
+          },
+        ],
+      });
+
+      setEditMilestones(true);
+    }
+  };
+
+  const handleAddNewMilestone = () => {
+    const milestone = {
+      name: '',
+      amount: '',
+      dueDate: null,
+    };
+
+    const clone = [...form.milestones];
+    clone.push(milestone);
+
+    setForm({ milestones: clone });
+  };
+
+  const handleMilestoneChange = <T extends keyof Milestone>(
+    index: number,
     key: T,
     value: Milestone[T],
   ) => {
-    const clone = { ...newMilestone };
-    clone[key] = value;
-    setNewMilestone(clone);
+    const clone = [...form.milestones];
+
+    clone[index][key] = value;
+
+    setForm({ milestones: clone });
   };
 
   const handleCancelClick = () => {
     setEditMilestones(false);
     setEditDesc(false);
 
-    setDescription(props.description);
+    resetForm();
+  };
+
+  const handleSubmitClick = () => {
+    if (!data) return;
+
+    const dateNow = new Date();
+
+    const milestones: API2.Milestone[] = form.milestones.map((m) => ({
+      id: crypto.randomUUID(),
+      created_at: dateNow.toISOString(),
+      description: m.amount,
+      due_date: m.dueDate!.toISOString(),
+      name: m.name,
+      offsets_available: 50,
+      offsets_total: 50,
+      project_id: crypto.randomUUID(),
+      status: 'pending',
+      type: 'Test',
+      updated_at: dateNow.toISOString(),
+    }));
+
+    api.project.updateOne(data.id, form.description, milestones);
+
+    setEditDesc(false);
   };
 
   return (
@@ -147,11 +221,14 @@ export default (props: API.SellerProject) => {
         <Image />
       </ImageContainer>
 
-      <p className="subtitle-large">{props.name}</p>
+      <p className="subtitle-large">{data?.name || ''}</p>
 
       <Container>
         <FormItem label={locale.seller.previewEditForm.label.type}>
-          <p className="body-xs">{props.type}</p>
+          <p className="body-xs">
+            {/* {data.type} */}
+            Test
+          </p>
         </FormItem>
 
         <BorderLine />
@@ -163,46 +240,62 @@ export default (props: API.SellerProject) => {
         <BorderLine />
 
         <FormItem label={locale.seller.previewEditForm.label.milestones}>
-          <OutlinedPencil onClick={() => setEditMilestones(true)} />
+          <OutlinedPencil onClick={handleEditMilestoneClick} />
 
           <MilestoneGroup>
-            {props.milestones.map((m) => (
-              <React.Fragment key={m.id}>
-                <p className="body-xs">{m.name}</p>
-                <p className="body-xs">{m.task}</p>
-                <p className="body-xs">
-                  {locale.seller.previewEditForm.dueDatePrefix} {m.dueDate}
-                </p>
-              </React.Fragment>
-            ))}
+            {data?.milestones &&
+              data.milestones.map((m) => {
+                const date = new Date(m.due_date);
+                const formattedDate = format(date, 'yyyy-MM-dd');
 
-            {editMilestones && (
-              <>
-                <EditInput
-                  label={locale.seller.previewEditForm.milestones.label.name}
-                  placeholder={
-                    locale.seller.previewEditForm.milestones.placeholder.name
-                  }
-                  onChange={(e) => handleNewMilestoneChange('name', e.target.value)}
-                />
-                <EditInput
-                  label={locale.seller.previewEditForm.milestones.label.amt}
-                  placeholder={locale.seller.previewEditForm.milestones.placeholder.amt}
-                  onChange={(e) => handleNewMilestoneChange('amount', e.target.value)}
-                />
-                <EditInput
-                  label={locale.seller.previewEditForm.milestones.label.dueDate}
-                  placeholder={
-                    locale.seller.previewEditForm.milestones.placeholder.dueDate
-                  }
-                  onChange={(e) => handleNewMilestoneChange('dueDate', e.target.value)}
-                />
-              </>
-            )}
+                return (
+                  <React.Fragment key={m.id}>
+                    <p className="body-xs">{m.name}</p>
+                    <p className="body-xs">{m.description}</p>
+                    <p className="body-xs">
+                      {locale.seller.previewEditForm.dueDatePrefix} {formattedDate}
+                    </p>
+                  </React.Fragment>
+                );
+              })}
+
+            {editMilestones &&
+              form.milestones.map((m, i) => (
+                <React.Fragment key={i}>
+                  <EditInput.Classic
+                    label={locale.seller.previewEditForm.milestones.label.name}
+                    placeholder={
+                      locale.seller.previewEditForm.milestones.placeholder.name
+                    }
+                    value={m.name}
+                    onChange={(e) => handleMilestoneChange(i, 'name', e.target.value)}
+                  />
+
+                  <EditInput.Classic
+                    label={locale.seller.previewEditForm.milestones.label.amt}
+                    placeholder={
+                      locale.seller.previewEditForm.milestones.placeholder.amt
+                    }
+                    value={m.amount}
+                    onChange={(e) => handleMilestoneChange(i, 'amount', e.target.value)}
+                  />
+
+                  <EditInput.DatePicker
+                    label={locale.seller.previewEditForm.milestones.label.dueDate}
+                    placeholder={
+                      locale.seller.previewEditForm.milestones.placeholder.dueDate
+                    }
+                    value={m.dueDate}
+                    onChange={(d) => handleMilestoneChange(i, 'dueDate', d)}
+                  />
+                </React.Fragment>
+              ))}
           </MilestoneGroup>
 
           {editMilestones && (
-            <Button dashed>{locale.seller.previewEditForm.milestones.addBtn}</Button>
+            <Button dashed onClick={handleAddNewMilestone}>
+              {locale.seller.previewEditForm.milestones.addBtn}
+            </Button>
           )}
         </FormItem>
 
@@ -217,8 +310,8 @@ export default (props: API.SellerProject) => {
               className="body-xs"
               readOnly={!editDesc}
               resizeable={false}
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={form.description}
+              onChange={(e) => setForm({ description: e.target.value })}
             />
           </FormItem>
         </TextareaContainer>
@@ -232,7 +325,7 @@ export default (props: API.SellerProject) => {
                 {locale.seller.previewEditForm.button.cancel}
               </Button>
 
-              <Button classic>
+              <Button classic onClick={handleSubmitClick}>
                 {locale.seller.previewEditForm.button.saveChanges}
               </Button>
             </ButtonGroup>

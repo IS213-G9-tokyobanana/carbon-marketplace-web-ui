@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { color } from 'config';
 import { IntrinsicHTML } from 'types';
 
-const Wrapper = styled.input`
+export const Wrapper = styled.input`
   padding: 8px 16px;
   border-radius: 8px;
   outline: none;

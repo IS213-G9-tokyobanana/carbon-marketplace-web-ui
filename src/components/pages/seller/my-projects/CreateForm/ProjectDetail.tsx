@@ -45,7 +45,17 @@ const CoverImage = styled.div`
   color: #004323;
 `;
 
-export default () => {
+export default ({
+  title,
+  onTitleChange,
+  type,
+  onTypeChange,
+}: {
+  title: string;
+  onTitleChange: (s: string) => void;
+  type: string;
+  onTypeChange: (s: string) => void;
+}) => {
   return (
     <Wrapper>
       <h3 className="subtitle-small">
@@ -57,12 +67,16 @@ export default () => {
           <FormItem label={locale.seller.createForm.projectDetails.label.title}>
             <Input
               placeholder={locale.seller.createForm.projectDetails.placeholder.title}
+              value={title}
+              onChange={(e) => onTitleChange(e.target.value)}
             />
           </FormItem>
 
           <FormItem label={locale.seller.createForm.projectDetails.label.type}>
             <Input
               placeholder={locale.seller.createForm.projectDetails.placeholder.type}
+              value={type}
+              onChange={(e) => onTypeChange(e.target.value)}
             />
           </FormItem>
 

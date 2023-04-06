@@ -24,11 +24,13 @@ export default ({
   children,
   expand,
   setExpand,
+  popBottom = false,
   ...props
 }: {
   children: JSX.Element | Array<JSX.Element>;
   expand: boolean;
   setExpand: (b: boolean) => void;
+  popBottom?: boolean;
 } & IntrinsicHTML<'div'>) => {
   const ref = useRef<HTMLDivElement>(null);
 

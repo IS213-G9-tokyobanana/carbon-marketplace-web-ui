@@ -1,14 +1,17 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
+import { format } from 'date-fns';
 
 import config, { color } from 'config';
 import locale from 'locale';
-import { API } from 'types';
+import { API2 } from 'types';
 import useAnimation from './useAnimation';
 
 import FilledPencil from 'components/common/svg/FilledPencil';
-import StatusPill from '../StatusPill';
+import StatusBadge from '../StatusBadge';
 import EditStatusDropdown from './EditStatusDropdown';
+import useCollapse from 'components/common/Dropdown/useCollapse';
+import api from 'api';
 
 const Wrapper = styled.div`
   padding: 0 42px;
@@ -67,16 +70,18 @@ export default ({
   ...props
 }: {
   expand: boolean;
-} & API.Milestone) => {
+} & API2.Milestone) => {
   const ref = useRef<HTMLDivElement>(null);
 
   const [editStatus, setEditStatus] = useState(false);
 
+  const onSelectClick = useCollapse(editStatus, setEditStatus);
+
   useAnimation(expand, ref);
 
-  const toggleEditStatus = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    setEditStatus(!editStatus);
+  const handleStatusClick = (s: API2.Status) => {
+    api.project.updateMilestoneStatus(props.project_id, props.id, s);
+    setEditStatus(false);
   };
 
   return (
@@ -99,7 +104,7 @@ export default ({
         <p className="body-xs">{locale.verifier.accordion.progress}</p>
 
         <p className="body-small">
-          {props.expectedCO2}
+          {props.offsets_total}
           &nbsp;
           <span
             className="body-xs"
@@ -108,7 +113,7 @@ export default ({
         </p>
 
         <p className="body-small">
-          {props.currentCO2}
+          {props.offsets_available}
           &nbsp;
           <span
             className="body-xs"
@@ -116,16 +121,23 @@ export default ({
           />
         </p>
 
-        <p className="body-small">{props.lastUpdated}</p>
+        <p className="body-small">{format(new Date(props.updated_at), 'yyyy-MM-dd')}</p>
 
         <StatusContainer>
-          <StatusPill>{props.status}</StatusPill>
+          <StatusBadge>{props.status}</StatusBadge>
 
-          {config.verifier.editableStatus.find((s) => s === props.status) && (
+          {config.verifier.milestones.editableStatus.find(
+            (s) => s === props.status,
+          ) && (
             <>
-              <FilledPencil onClick={toggleEditStatus} />
+              <FilledPencil onClick={onSelectClick} />
 
-              <EditStatusDropdown expand={editStatus} setExpand={setEditStatus} />
+              <EditStatusDropdown
+                expand={editStatus}
+                setExpand={setEditStatus}
+                options={config.verifier.milestones.editOptions}
+                onOptionClick={handleStatusClick}
+              />
             </>
           )}
         </StatusContainer>

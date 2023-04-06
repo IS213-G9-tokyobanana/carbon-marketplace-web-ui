@@ -72,7 +72,13 @@ export default () => {
           <ButtonGroup>
             <Button inverted>{locale.purchaseDropdown.button.max}</Button>
 
-            <Button classic>{locale.purchaseDropdown.button.buy}</Button>
+            <form action="/api/checkout" method="POST">
+              <section>
+                <Button classic type="submit" role="link">
+                  {locale.purchaseDropdown.button.buy}
+                </Button>
+              </section>
+            </form>
           </ButtonGroup>
         </Container>
       </Menu>

@@ -43,7 +43,7 @@ export type IntrinsicHTML<T extends keyof JSX.IntrinsicElements> = Omit<
  * API
  */
 export namespace API2 {
-  export type Status = 'pending';
+  export type Status = 'pending' | 'verified' | 'met' | 'rejected';
 
   export type Milestone = {
     id: string;
@@ -71,6 +71,8 @@ export namespace API2 {
     types: string[];
     updated_at: string;
     category: string;
+    offsets_available?: number;
+    offsets_total?: number;
   };
 }
 

@@ -2,6 +2,7 @@ import { withIronSessionSsr } from 'iron-session/next';
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 
 import config from 'config';
+import { API2 } from 'types';
 
 export function applyStyleIf(predicate: boolean, style: string) {
   if (predicate) return style;
@@ -20,4 +21,11 @@ export function withSessionSsr<P extends { [key: string]: unknown }>(
   ) => GetServerSidePropsResult<P> | Promise<GetServerSidePropsResult<P>>,
 ) {
   return withIronSessionSsr(handler, config.ironOptions);
+}
+
+export function getProjectProgress(project: API2.Project) {
+  return project.milestones.reduce((prev, current) => {
+    if (current.status === 'met') return prev + 1;
+    else return prev;
+  }, 0);
 }

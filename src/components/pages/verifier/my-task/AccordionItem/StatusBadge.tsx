@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { API } from 'types';
+import { API2, IntrinsicHTML } from 'types';
 
 export const Wrapper = styled.div(
   ({ $bg, $color }: { $bg: string; $color: string }) => `
@@ -17,7 +17,12 @@ export const Wrapper = styled.div(
 `,
 );
 
-export default ({ children }: { children: API.Status }) => {
+export default ({
+  children,
+  ...props
+}: {
+  children: API2.Status;
+} & IntrinsicHTML<'div'>) => {
   let bgColor = '';
   let textColor = '';
 
@@ -30,7 +35,7 @@ export default ({ children }: { children: API.Status }) => {
       bgColor = '#DEF8EE';
       textColor = '#4AA785';
       break;
-    case 'in-progress':
+    case 'met':
       bgColor = '#EDEDFF';
       textColor = '#8A8CD9';
       break;
@@ -38,14 +43,14 @@ export default ({ children }: { children: API.Status }) => {
       bgColor = '#FFE2E2';
       textColor = '#D45959';
       break;
-    case 'inactive':
-      bgColor = '#DBDBDB';
-      textColor = '#838383';
-      break;
+    // case "inactive":
+    //   bgColor = "#DBDBDB";
+    //   textColor = "#838383";
+    //   break;
   }
 
   return (
-    <Wrapper $bg={bgColor} $color={textColor}>
+    <Wrapper {...props} $bg={bgColor} $color={textColor}>
       {children}
     </Wrapper>
   );

@@ -1,139 +1,16 @@
 import { API } from 'types';
 
 import project from './project';
+import { MeiliSearch } from 'meilisearch';
 
-function getProjects(): API.Project[] {
-  return [
-    {
-      id: 1,
-      category: 'Popular',
-      title: 'Orange and apple',
-      liked: false,
-      tco2e: 4,
-      description: `
-        Project description here. Lorem ipsum dolor sit amet, consectetur adipiscing 
-        elit
-      `,
-      star: 5,
-    },
-    {
-      id: 2,
-      category: 'Popular',
-      title: 'test loong title loong tittle',
-      liked: false,
-      tco2e: 4,
-      description: `
-        Lorem ipsum dolor sit amet. Et necessitatibus sunt sit omnis labore ut 
-        voluptatem atque a adipisci dolor? Aut magnam nihil et voluptatem atque quo 
-        atque deleniti ut similique voluptates quo quia quidem. 
-      `,
-      star: 3,
-    },
-    {
-      id: 3,
-      category: 'Popular',
-      title: 'test loong title',
-      liked: false,
-      tco2e: 4,
-      description: `
-        Lorem ipsum dolor sit amet. Et necessitatibus sunt sit omnis labore ut 
-        voluptatem atque a adipisci dolor? Aut magnam nihil et voluptatem atque quo 
-        atque deleniti ut similique voluptates quo quia quidem. 
-      `,
-      star: 3,
-    },
-    {
-      id: 4,
-      category: 'Popular',
-      title: 'test loong title',
-      liked: false,
-      tco2e: 4,
-      description: `
-        Lorem ipsum dolor sit amet. Et necessitatibus sunt sit omnis labore ut 
-        voluptatem atque a adipisci dolor? Aut magnam nihil et voluptatem atque quo 
-        atque deleniti ut similique voluptates quo quia quidem. 
-      `,
-      star: 3,
-    },
-    {
-      id: 5,
-      category: 'Popular',
-      title: 'test loong title',
-      liked: false,
-      tco2e: 4,
-      description: `
-        Lorem ipsum dolor sit amet. Et necessitatibus sunt sit omnis labore ut 
-        voluptatem atque a adipisci dolor? Aut magnam nihil et voluptatem atque quo 
-        atque deleniti ut similique voluptates quo quia quidem. 
-      `,
-      star: 3,
-    },
-    {
-      id: 6,
-      category: 'Popular',
-      title: 'test loong title',
-      liked: false,
-      tco2e: 4,
-      description: `
-        Lorem ipsum dolor sit amet. Et necessitatibus sunt sit omnis labore ut 
-        voluptatem atque a adipisci dolor? Aut magnam nihil et voluptatem atque quo 
-        atque deleniti ut similique voluptates quo quia quidem. 
-      `,
-      star: 3,
-    },
-    {
-      id: 7,
-      category: 'Community Projects',
-      title: 'test loong title',
-      liked: false,
-      tco2e: 4,
-      description: `
-        Lorem ipsum dolor sit amet. Et necessitatibus sunt sit omnis labore ut 
-        voluptatem atque a adipisci dolor? Aut magnam nihil et voluptatem atque quo 
-        atque deleniti ut similique voluptates quo quia quidem. 
-      `,
-      star: 3,
-    },
-    {
-      id: 8,
-      category: 'Community Projects',
-      title: 'test loong title',
-      liked: false,
-      tco2e: 8,
-      description: `
-        Lorem ipsum dolor sit amet. Et necessitatibus sunt sit omnis labore ut 
-        voluptatem atque a adipisci dolor? Aut magnam nihil et voluptatem atque quo 
-        atque deleniti ut similique voluptates quo quia quidem. 
-      `,
-      star: 3,
-    },
-    {
-      id: 9,
-      category: 'Regional Projects',
-      title: 'test loong title',
-      liked: false,
-      tco2e: 9,
-      description: `
-        Lorem ipsum dolor sit amet. Et necessitatibus sunt sit omnis labore ut 
-        voluptatem atque a adipisci dolor? Aut magnam nihil et voluptatem atque quo 
-        atque deleniti ut similique voluptates quo quia quidem. 
-      `,
-      star: 3,
-    },
-    {
-      id: 10,
-      category: 'Enterprise',
-      title: 'test loong title',
-      liked: false,
-      tco2e: 1,
-      description: `
-        Lorem ipsum dolor sit amet. Et necessitatibus sunt sit omnis labore ut 
-        voluptatem atque a adipisci dolor? Aut magnam nihil et voluptatem atque quo 
-        atque deleniti ut similique voluptates quo quia quidem. 
-      `,
-      star: 3,
-    },
-  ];
+const client = new MeiliSearch({
+  host: `${process.env.MEILI_URL}`,
+  apiKey: 'MASTER_KEY',
+});
+
+async function getProjects(): Promise<any> {
+  const projects = await client.index('projects').getDocuments({ limit: 20 });
+  return projects;
 }
 
 function getQuestions(): API.Question[] {

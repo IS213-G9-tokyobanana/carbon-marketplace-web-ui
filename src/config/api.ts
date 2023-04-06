@@ -1,6 +1,3 @@
 export default {
-  baseUrl: '13.214.157.207',
-  port: {
-    project: 15003,
-  },
+  baseUrl: 'http://13.215.193.122:8000/api/v1',
 };

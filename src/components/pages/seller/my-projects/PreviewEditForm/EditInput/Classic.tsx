@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   background: ${color.neutral1};
   padding: 8px 10px;
   border-radius: 8px;
+  min-width: 1px;
   border: 1px solid ${color.neutral4};
 
   display: flex;

@@ -2,9 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { color } from 'config';
-import { API } from 'types';
+import { API2 } from 'types';
 import locale from 'locale';
-import { applyStyleIf } from 'utils';
+import { applyStyleIf, getProjectProgress } from 'utils';
 
 import Image, { Wrapper as $Image } from 'components/common/Image';
 import ProgressBar from 'components/common/ProgressBar';
@@ -104,7 +104,7 @@ export default React.forwardRef(
     }: {
       onClick: () => void;
       active?: boolean;
-    } & API.SellerProject,
+    } & API2.Project,
     ref: React.ForwardedRef<HTMLDivElement>,
   ) => {
     return (
@@ -123,13 +123,19 @@ export default React.forwardRef(
           <Attribute>
             <p className="body-xs">{locale.seller.card.label.type}</p>
 
-            <p className="body-small">{props.type}</p>
+            <p className="body-small">
+              {/* {props.type} */}
+              Type
+            </p>
           </Attribute>
 
           <Attribute>
             <p className="body-xs">{locale.seller.card.label.milestone}</p>
 
-            <ProgressBar progress={5} total={10} />
+            <ProgressBar
+              progress={getProjectProgress(props)}
+              total={props.milestones.length}
+            />
           </Attribute>
         </AttributeContainer>
       </Wrapper>

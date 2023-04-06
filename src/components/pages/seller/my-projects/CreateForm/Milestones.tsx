@@ -8,6 +8,7 @@ import { Milestone } from './types';
 import Input from 'components/common/Input';
 import FormItem from './FormItem';
 import Button, { Wrapper as $Button } from 'components/common/Button';
+import DatePicker from './DatePicker';
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,7 +34,16 @@ const FormItemGroup = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 10px;
-  row-gap: 16px;
+
+  label {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  input {
+    padding: 12px 16px;
+  }
 `;
 
 export default ({
@@ -58,7 +68,7 @@ export default ({
     const newMilestone = {
       name: '',
       amt: '',
-      date: '',
+      date: null,
     };
 
     const clone = [...milestones, newMilestone];
@@ -71,33 +81,29 @@ export default ({
 
       <Container>
         <FormItemGroup>
+          <label>{locale.seller.createForm.milestones.label.name}</label>
+          <label>{locale.seller.createForm.milestones.label.amt}</label>
+          <label>{locale.seller.createForm.milestones.label.amt}</label>
+
           {milestones.map((m, i) => (
             <React.Fragment key={i}>
-              <FormItem label={locale.seller.createForm.milestones.label.name}>
-                <Input
-                  placeholder={locale.seller.createForm.milestones.placeholder.input}
-                  value={m.name}
-                  onChange={(e) => handleMilestoneChange(i, 'name', e.target.value)}
-                />
-              </FormItem>
+              <Input
+                placeholder={locale.seller.createForm.milestones.placeholder.input}
+                value={m.name}
+                onChange={(e) => handleMilestoneChange(i, 'name', e.target.value)}
+              />
 
-              <FormItem label={locale.seller.createForm.milestones.label.amt}>
-                <Input
-                  placeholder={locale.seller.createForm.milestones.placeholder.input}
-                  value={m.amt}
-                  onChange={(e) => handleMilestoneChange(i, 'amt', e.target.value)}
-                />
-              </FormItem>
+              <Input
+                placeholder={locale.seller.createForm.milestones.placeholder.input}
+                value={m.amt}
+                onChange={(e) => handleMilestoneChange(i, 'amt', e.target.value)}
+              />
 
-              <FormItem label={locale.seller.createForm.milestones.label.amt}>
-                <Input
-                  placeholder={
-                    locale.seller.createForm.milestones.placeholder.datepicker
-                  }
-                  value={m.date}
-                  onChange={(e) => handleMilestoneChange(i, 'date', e.target.value)}
-                />
-              </FormItem>
+              <DatePicker
+                placeholder={locale.seller.createForm.milestones.placeholder.datepicker}
+                value={m.date}
+                onChange={(d) => handleMilestoneChange(i, 'date', d)}
+              />
             </React.Fragment>
           ))}
         </FormItemGroup>

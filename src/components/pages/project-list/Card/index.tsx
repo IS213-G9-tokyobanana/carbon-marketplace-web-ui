@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { color } from 'config';
-import { API } from 'types';
+import { API2 } from 'types';
 import locale from 'locale';
 
 import Heart from 'components/common/svg/Heart';
@@ -80,10 +80,10 @@ const Description = styled.p`
   display: -webkit-box;
 `;
 
-export default (props: API.Project) => (
+export default (props: API2.Project) => (
   <Wrapper>
     <Header>
-      <p className="body-large">{props.title}</p>
+      <p className="body-large">{props.name}</p>
       <Heart />
     </Header>
 
@@ -96,7 +96,7 @@ export default (props: API.Project) => (
 
       <StarGroup>
         {Array.from(Array(5).keys()).map((_, i) => (
-          <Star key={i} active={i < props.star} />
+          <Star key={i} active={i < 5 * (props.rating / 100)} />
         ))}
       </StarGroup>
     </FlexRow>
@@ -105,7 +105,7 @@ export default (props: API.Project) => (
 
     <FlexRow>
       <p className="body-small">
-        {props.tco2e} {locale.tco2e.denominator}
+        {props.offsets_available} / {props.offsets_total}
         &nbsp;
         <span dangerouslySetInnerHTML={{ __html: locale.tco2e.token }} />
       </p>

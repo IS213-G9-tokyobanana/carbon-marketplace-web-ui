@@ -1,6 +1,12 @@
-import { API } from 'types';
+import { API2 } from 'types';
 
 export default {
-  editableStatus: ['in-progress', 'inactive'] satisfies API.Status[],
-  editStatusOptions: ['rejected', 'verified'] satisfies API.Status[],
+  project: {
+    editableStatus: ['pending'] satisfies API2.Status[],
+    editOptions: ['verified', 'rejected'] satisfies API2.Status[],
+  },
+  milestones: {
+    editableStatus: ['pending'] satisfies API2.Status[],
+    editOptions: ['met', 'rejected'] satisfies API2.Status[],
+  },
 };

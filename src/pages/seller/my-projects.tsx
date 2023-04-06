@@ -2,8 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { IncomingMessage } from 'http';
 
-import { API } from 'types';
-import api from 'api';
+import { API2 } from 'types';
 import config, { color } from 'config';
 import locale from 'locale';
 import { withSessionSsr } from 'utils';
@@ -15,6 +14,7 @@ import Controller from 'components/pages/seller/my-projects/Controller';
 import ProjectCard from 'components/pages/seller/my-projects/ProjectCard';
 import CreateForm from 'components/pages/seller/my-projects/CreateForm';
 import PreviewEditForm from 'components/pages/seller/my-projects/PreviewEditForm';
+import useMockProjectStore from 'stores/useMockProjectStore';
 
 const Wrapper = styled.div`
   --section-padding-v: 32px;
@@ -48,7 +48,10 @@ const CardGroup = styled.div`
   }
 `;
 
-export default ({ projects }: { projects: API.SellerProject[] }) => {
+export default () => {
+  const hydrated = useMockProjectStore((state) => state.hydrated);
+  const mockProject = useMockProjectStore((state) => state.projects);
+  const [projects, setProjects] = useState<API2.Project[]>([]);
   useUserSetter('seller');
 
   const addButton = useRef<HTMLButtonElement>(null);
@@ -56,10 +59,15 @@ export default ({ projects }: { projects: API.SellerProject[] }) => {
 
   const [addProject, setAddProject] = useState(false);
 
-  const [selectedProject, setSelectedProject] = useState<API.SellerProject>(
-    projects[0] ?? undefined,
-  );
+  const [selectedProject, setSelectedProject] = useState<API2.Project>();
   const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    if (hydrated) {
+      setProjects(mockProject);
+      setSelectedProject(mockProject[0] || undefined);
+    }
+  }, [hydrated, mockProject]);
 
   useEffect(() => {
     if (!card.current) return;
@@ -78,10 +86,14 @@ export default ({ projects }: { projects: API.SellerProject[] }) => {
     return () => {
       ro.disconnect();
     };
-  }, [addProject]);
+  }, [addProject, projects]);
 
   const goToCreateForm = () => {
     setAddProject(true);
+  };
+
+  const handleFormCreated = () => {
+    setAddProject(false);
   };
 
   return (
@@ -103,7 +115,7 @@ export default ({ projects }: { projects: API.SellerProject[] }) => {
                   ref={card}
                   key={p.id}
                   onClick={() => setSelectedProject(p)}
-                  active={selectedProject.id === p.id}
+                  active={selectedProject?.id === p.id}
                   {...p}
                 />
               ))}
@@ -115,10 +127,15 @@ export default ({ projects }: { projects: API.SellerProject[] }) => {
           </>
         )}
 
-        {addProject && <CreateForm onCancel={() => setAddProject(false)} />}
+        {addProject && (
+          <CreateForm
+            onSubmit={handleFormCreated}
+            onCancel={() => setAddProject(false)}
+          />
+        )}
       </Dashboard>
 
-      {!addProject && <PreviewEditForm {...selectedProject} />}
+      {!addProject && <PreviewEditForm data={selectedProject} />}
     </Wrapper>
   );
 };
@@ -133,10 +150,8 @@ export const getServerSideProps = withSessionSsr(
       };
     }
 
-    const projects = api.getSellerProjects();
-
     return {
-      props: { projects },
+      props: {},
     };
   },
 );

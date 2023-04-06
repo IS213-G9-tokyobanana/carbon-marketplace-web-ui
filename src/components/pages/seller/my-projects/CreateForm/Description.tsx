@@ -16,15 +16,21 @@ export const Wrapper = styled.div`
   }
 `;
 
-export default () => {
-  return (
-    <Wrapper>
-      <h3>{locale.seller.createForm.description.title}</h3>
+export default ({
+  value,
+  onChange,
+}: {
+  value: string;
+  onChange: (s: string) => void;
+}) => (
+  <Wrapper>
+    <h3>{locale.seller.createForm.description.title}</h3>
 
-      <Textarea
-        placeholder={locale.seller.createForm.description.placeholder}
-        rows={6}
-      />
-    </Wrapper>
-  );
-};
+    <Textarea
+      placeholder={locale.seller.createForm.description.placeholder}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      rows={6}
+    />
+  </Wrapper>
+);

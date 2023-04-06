@@ -17,6 +17,7 @@ const Wrapper = styled.div`
 
 const Dashboard = styled.div`
   flex-grow: 1;
+  overflow-y: hidden;
 
   padding: 24px;
   max-width: var(--dashboard-max-width);
