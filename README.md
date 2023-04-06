@@ -1,11 +1,9 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
 <a name="readme-top"></a>
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-backend">
+  <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-web-ui">
     <img src=".github/assets/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -14,14 +12,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
   <p align="center">
     A place for people to buy carbon offsets to help reduce their carbon footprint and support green projects.
     <br />
-    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-backend"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-web-ui"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-backend">View Demo</a>
+    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-web-ui">View Demo</a>
     ·
-    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-backend/issues/new?assignees=&labels=bug&template=bug-report.md&title=%5BMICROSERVICE_NAME%5D%3A+ISSUE_TITLE">Report Bug</a>
+    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-web-ui/issues/new?assignees=&labels=bug&template=bug-report.md&title=%5BMICROSERVICE_NAME%5D%3A+ISSUE_TITLE">Report Bug</a>
     ·
-    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-backend/issues/new?assignees=&labels=enhancement&template=feature-request.md&title=%5BMICROSERVICE_NAME%5D%3A+FEATURE_TITLE">Request Feature</a>
+    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-web-ui/issues/new?assignees=&labels=enhancement&template=feature-request.md&title=%5BMICROSERVICE_NAME%5D%3A+FEATURE_TITLE">Request Feature</a>
   </p>
 </div>
 
@@ -38,20 +36,30 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
     <li>
       <a href="#initial-setup">Initial Setup</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#local-development">Local Development</a></li>
       </ul>
-    </li>
-    <li>
-      <a href="#api-acknowledgements">API Acknowledgments</a>
     </li>
   </ol>
 </details>
 
+## About The Project
 
-## Getting Started
+<!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-First, run the development server:
+Our app is a platform that enables individuals and organisations to contribute to reduce greenhouse gases in the atomosphere through voluntary carbon offsetting. It allows any entity to (1) obtain funding for new green projects and (2) further monetise existing green projects that have already began consistently removing CO2 from environment.
+
+The focus is primarily on the voluntary market where anyone can fund new projects or support existing projects by buying carbon credits sold by these companies on our platform. Our focus is not on the compliance market, which involves the trading of carbon credits between companies that have hit their carbon credit cap set by government and wish to buy carbon credits from other companies with surplus carbon credits (i.e., companies whose carbon credits are below the cap set by government).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Built With 
+- [Next.Js] (https://nextjs.org/) (React Web Framework)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Initial Setup
+
+Run the development server:
 
 ```bash
 npm run dev
@@ -61,6 +69,7 @@ yarn dev
 pnpm dev
 ```
 
+### Local Development
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
@@ -71,17 +80,4 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
