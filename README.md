@@ -1,5 +1,54 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+<a name="readme-top"></a>
+
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-backend">
+    <img src=".github/assets/logo.png" alt="Logo" width="80" height="80">
+  </a>
+
+<h3 align="center">Carbon Offset Marketplace</h3>
+
+  <p align="center">
+    A place for people to buy carbon offsets to help reduce their carbon footprint and support green projects.
+    <br />
+    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-backend"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-backend">View Demo</a>
+    ·
+    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-backend/issues/new?assignees=&labels=bug&template=bug-report.md&title=%5BMICROSERVICE_NAME%5D%3A+ISSUE_TITLE">Report Bug</a>
+    ·
+    <a href="https://github.com/IS213-G9-tokyobanana/carbon-marketplace-backend/issues/new?assignees=&labels=enhancement&template=feature-request.md&title=%5BMICROSERVICE_NAME%5D%3A+FEATURE_TITLE">Request Feature</a>
+  </p>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<details open>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#initial-setup">Initial Setup</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#local-development">Local Development</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#api-acknowledgements">API Acknowledgments</a>
+    </li>
+  </ol>
+</details>
+
+
 ## Getting Started
 
 First, run the development server:
