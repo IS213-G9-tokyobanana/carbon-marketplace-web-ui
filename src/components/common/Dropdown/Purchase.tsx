@@ -54,6 +54,12 @@ export default () => {
   const [expand, setExpand] = useState(false);
 
   const onSelectClick = useCollapse(expand, setExpand);
+  const [quantity, setQuantity] = useState(0);
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setQuantity(parseInt(value, 10));
+  };
 
   return (
     <Wrapper>
@@ -64,7 +70,10 @@ export default () => {
       <Menu expand={expand} setExpand={setExpand} onClick={(e) => e.stopPropagation()}>
         <Container>
           <InputContainer>
-            <Input placeholder={locale.purchaseDropdown.placeholder} />
+            <Input
+              placeholder={locale.purchaseDropdown.placeholder}
+              onChange={handleInput}
+            />
 
             <Unit>{locale.tco2e.token}</Unit>
           </InputContainer>
@@ -73,6 +82,7 @@ export default () => {
             <Button inverted>{locale.purchaseDropdown.button.max}</Button>
 
             <form action="/api/checkout" method="POST">
+              <input type="hidden" name="quantity" value={quantity} />
               <section>
                 <Button classic type="submit" role="link">
                   {locale.purchaseDropdown.button.buy}

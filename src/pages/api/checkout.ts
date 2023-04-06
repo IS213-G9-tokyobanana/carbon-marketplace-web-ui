@@ -38,7 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         line_items: [
           {
             price: 'price_1MtAFxGehkGRMk67oC6t1vpX',
-            quantity: req.body.quantity_tco2e,
+            quantity: req.body.quantity,
           },
         ],
         mode: 'payment',
@@ -51,7 +51,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
         payment_id: session.id,
         project_id: req.body.project_id,
         milestone_id: req.body.milestone_id,
-        quantity_tco2e: req.body.quantity_tco2e,
+        quantity_tco2e: req.body.quantity,
         owner_id: req.body.owner_id,
         buyer_id: req.body.buyer_id,
       });
