@@ -127,3 +127,8 @@ export namespace API {
     milestones: Milestone[];
   };
 }
+
+export enum MsgType {
+  MILESTONE_PENALISE = 'milestone_penalise',
+  PAYMENT_OVERDUE = 'payment_overdue',
+}

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from 'config';
 import useMockProjectStore from 'stores/useMockProjectStore';
-import { API2 } from 'types';
+import { API2, MsgType } from 'types';
 
 function getAll(): API2.Project[] {
   // const response = await axios.get(`http://${config.api.baseUrl}:${config.api.port.project}/projects`);
@@ -92,6 +92,25 @@ function updateMilestoneStatus(
     .catch((error) => {
       console.log(error);
     });
+
+  let msgType;
+  switch (status) {
+    case 'rejected':
+      msgType = MsgType.MILESTONE_PENALISE;
+      break;
+  }
+
+  axios
+    .post('/api/amqp', {
+      resourceId: projectId,
+      msgType: msgType,
+      msgData: {
+        project_id: projectId,
+        milestone_id: milestoneId,
+      },
+    })
+    .then((response) => console.log(response.data))
+    .catch((error) => console.error(error));
 }
 
 export default {

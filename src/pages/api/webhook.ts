@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import type { Stripe } from 'stripe';
 import getRawBody from 'raw-body';
+import axios from 'axios';
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
@@ -37,22 +38,26 @@ const sendStatus = async (sessionId: string, amount: number, status: string) => 
   console.log('status', status);
 
   // post request to backend
-  const response = await fetch(`${process.env.BACKEND_BASE_URL}/buy/webhook`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      payment_id: sessionId,
-      status: status,
-    }),
-  });
-
-  if (response.status === 200) {
-    console.log('send success');
-  }
-
-  return response;
+  axios
+    .post(
+      `${process.env.BACKEND_BASE_URL}/buy/webhook`,
+      {
+        payment_id: sessionId,
+        status: status,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    )
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  return;
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Resp>) {
@@ -77,12 +82,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       switch (event.type) {
         case StripeWebhooks.Completed: {
           const session = event.data.object as Stripe.Checkout.Session;
-          await sendStatus(session.id, session.amount_subtotal!, session.status!);
+          sendStatus(session.id, session.amount_subtotal!, session.status!);
           break;
         }
         case StripeWebhooks.Expired: {
           const session = event.data.object as Stripe.Checkout.Session;
-          await sendStatus(session.id, session.amount_subtotal!, session.status!);
+          sendStatus(session.id, session.amount_subtotal!, session.status!);
           break;
         }
       }

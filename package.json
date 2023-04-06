@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@stripe/stripe-js": "^1.52.0",
+    "amqplib": "^0.10.3",
     "axios": "^1.3.4",
     "date-fns": "^2.29.3",
     "gsap": "^3.11.4",
@@ -28,6 +29,7 @@
     "zustand": "^4.3.6"
   },
   "devDependencies": {
+    "@types/amqplib": "^0.10.1",
     "@types/node": "18.15.0",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
